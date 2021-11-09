@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".PlaylistSongsActivity">
+
+    <TextView
+        android:id="@+id/nosongstext"
+        android:layout_width="165dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/myfont"
+        android:gravity="center"
+        android:text="Тут еще нет песен. Хотите добавить?"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="135dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@id/nosongstext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-64dp"
+        android:background="@drawable/btnsongsplayliststyle"
+        android:text="Добавить"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#FFD645">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/myfont"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/backbtnsongsplaylist"
+            android:layout_width="91dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="false"
+            android:background="#00FFFFFF"
+            android:paddingLeft="32dp"
+            android:paddingTop="24dp"
+            android:paddingRight="38dp"
+            android:paddingBottom="24dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/back2" />
+
+        <ImageButton
+            android:id="@+id/moresongsplaylist"
+            android:layout_width="91dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="#00FFFFFF"
+            android:paddingLeft="29dp"
+            android:paddingTop="24dp"
+            android:paddingRight="41dp"
+            android:paddingBottom="24dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/more" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:elevation="1dp"/>
+
+    <ListView
+        android:id="@+id/songs"
+
+        android:layout_width="match_parent"
+        android:layout_height="589dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:divider="#ffffff"
+        android:dividerHeight="10.5px"
+        android:listSelector="@android:color/transparent"
+        android:longClickable="true"
+        android:paddingBottom="10dp"
+        android:scrollbarSize="0sp"
+        android:scrollbars="none">
+
+    </ListView>
+</RelativeLayout>

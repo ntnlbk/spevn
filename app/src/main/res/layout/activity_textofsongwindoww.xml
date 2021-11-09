@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+
+    android:layout_margin="15dp"
+    android:layout_marginBottom="30dp"
+    android:gravity="center"
+
+
+    android:paddingBottom="25dp"
+    android:scrollbars="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="132dp"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="@font/myfont"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+
+
+        android:textSize="20dp" />
+
+    <ImageButton
+        android:id="@+id/optionsbtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/optionsbtn" />
+
+    <ImageButton
+        android:id="@+id/backbtn"
+        android:layout_width="44dp"
+        android:layout_height="31.5dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="24dp"
+        android:paddingTop="14dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/yellowback" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songs"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:orientation="horizontal"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/nametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="87dp"
+        android:fontFamily="@font/myfont"
+        android:gravity="center"
+        android:text="Название"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/arrowimage"
+        android:layout_width="30dp"
+        android:layout_height="17.62dp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18.19dp"
+        app:srcCompat="@drawable/uparrow" />
+
+    <TextView
+        android:id="@+id/listenbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/arrowimage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-20.81dp"
+        android:fontFamily="@font/myfont"
+        android:paddingTop="20.81dp"
+        android:paddingBottom="2dp"
+        android:text="послушать"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+</RelativeLayout>
+
+
+

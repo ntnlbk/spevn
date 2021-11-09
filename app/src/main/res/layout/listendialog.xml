@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/listendialogstyle">
+
+    <LinearLayout
+        android:layout_width="672dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/listendialogstyle"
+        android:backgroundTint="#FFD645"
+        android:backgroundTintMode="src_in"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/closeimgbtn"
+            android:layout_width="20dp"
+            android:layout_height="17.25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8.13dp"
+            app:srcCompat="@drawable/downarrow" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16.13dp"
+            android:fontFamily="@font/myfont"
+            android:gravity="center"
+            android:text="EX ANIMA"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="222.08dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressBackgroundTintMode="add"
+            android:progressTint="#FFFFFF"
+            android:thumb="@drawable/eclipse"
+            android:thumbTint="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/playbtn"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="29.92dp"
+            app:srcCompat="@drawable/playbtn" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutUsActivity">
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView18"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/myfont"
+        android:text="flynidDev@gmail.com"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView17"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="51dp"
+        android:fontFamily="@font/myfont"
+        android:text="Связь"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView16"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/myfont"
+        android:text="2021"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView14"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/myfont"
+        android:text="Браслав"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignRight="@id/textView13"
+        android:layout_alignBottom="@id/textView13"
+        android:layout_marginEnd="-46dp"
+        android:layout_marginRight="-46dp"
+        android:layout_marginBottom="-4.5dp"
+        app:srcCompat="@drawable/flynid2" />
+
+    <ImageButton
+        android:id="@+id/backbtninaboutus"
+        android:layout_width="52dp"
+        android:layout_height="41.57dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="32dp"
+        android:paddingTop="24.42dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/yellowback" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/myfont"
+        android:text="Информация"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="170dp"
+        android:fontFamily="@font/myfont"
+        android:text="Основная"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="219dp"
+        android:fontFamily="@font/myfont"
+        android:text="Сделано FlyNid"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView13"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="54dp"
+        android:fontFamily="@font/myfont"
+        android:text="Санктуарый Маці Божай Валадаркі Азёраў"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/reclama"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="#FFD645"
+        android:fontFamily="@font/myfont"
+        android:text="Угостить разработчика кофе"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+</RelativeLayout>

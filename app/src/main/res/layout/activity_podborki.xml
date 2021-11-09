@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:background="#ffffff"
+            tools:context=".MainActivity"
+            tools:openDrawer="start">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/menubtn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+                <TextView
+                    android:id="@+id/xtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/shortlist"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-40dp"
+                    android:gravity="center"
+                    android:text="Рождественские песни:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <ListView
+                    android:id="@+id/shortlist"
+                    android:layout_width="329dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/shorttext"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-178dp"
+                    android:divider="#ffffff"
+                    android:dividerHeight="10.5px" />
+
+                <TextView
+                    android:id="@+id/shorttext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/longlist"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-40dp"
+                    android:gravity="center"
+                    android:text="Короткие песни:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/longtext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Длинные песни:"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <ListView
+                    android:id="@+id/longlist"
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp"
+                    android:divider="#ffffff"
+                    android:dividerHeight="10.5px" />
+
+                <ListView
+                    android:id="@+id/xlist"
+                    android:layout_width="323dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/xtext"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="-180dp"
+                    android:divider="#ffffff"
+                    android:dividerHeight="10.5px" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true"
+                 />
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+    </LinearLayout>
+
+</ScrollView>

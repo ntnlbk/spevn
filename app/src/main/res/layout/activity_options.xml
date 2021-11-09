@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OptionsActivity">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/imageView13"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/palitra" />
+
+    <TextView
+        android:id="@+id/tontext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView12"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="7"
+        android:textColor="#99000000"
+        android:textSize="18dp" />
+
+    <ImageButton
+        android:id="@+id/pluston"
+        android:layout_width="61dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/imageView12"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="21dp"
+        android:paddingTop="20dp"
+        android:paddingRight="19dp"
+        android:paddingBottom="20dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/pluston" />
+
+    <ImageButton
+        android:id="@+id/minuston"
+        android:layout_width="53dp"
+        android:layout_height="59dp"
+        android:layout_alignBottom="@id/imageView12"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="13dp"
+        android:paddingTop="28dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="29dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/minuston" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView13"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="Изменить цвет аккордов"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView12"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="Транспонировать"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/imageView12"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="27.25dp"
+        android:layout_marginLeft="27.25dp"
+        android:layout_marginEnd="27.25dp"
+        android:layout_marginRight="27.25dp"
+        android:layout_marginBottom="-75dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/rec" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/imageView11"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="27.25dp"
+        android:layout_marginLeft="27.25dp"
+        android:layout_marginEnd="27.25dp"
+        android:layout_marginRight="27.25dp"
+        android:layout_marginBottom="-75dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/rec" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView11"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="Показывать аккорды"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/textView10"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="27.25dp"
+        android:layout_marginLeft="27.25dp"
+        android:layout_marginEnd="27.25dp"
+        android:layout_marginRight="27.25dp"
+        android:layout_marginBottom="-102dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/rec" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/myfont"
+        android:text="Настройки"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/backbtn2"
+        android:layout_width="20dp"
+        android:layout_height="17.5dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/yellowback" />
+
+    <CheckBox
+        android:id="@+id/chords"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_alignBottom="@id/imageView11"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginBottom="19dp"
+        android:button="@null"
+        android:background="@drawable/checkbox_theme_options"
+        android:checked="true"
+        android:textSize="21sp"
+
+
+        />
+
+    <Button
+        android:id="@+id/accept"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginBottom="15dp"
+        android:background="#FFD645"
+        android:fontFamily="@font/myfont"
+        android:text="Сохранить"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="21dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

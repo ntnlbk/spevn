@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/dialogstyleplaylist">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/myfont"
+        android:gravity="center"
+        android:text="Новый плейлист"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="#FFD645"
+        android:fontFamily="@font/myfont"
+        android:hint="Название плейлиста"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSize="14dp">
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/closebtndialog"
+                android:layout_width="127dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
+                android:background="#00FFFFFF"
+                android:gravity="center|center_vertical"
+                android:text="Закрыть"
+                android:textColor="#FFD645" />
+
+            <Button
+                android:id="@+id/savebtn"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="18dp"
+                android:layout_marginRight="18dp"
+                android:background="#00FFFFFF"
+                android:gravity="center"
+                android:text="Сохранить"
+                android:textColor="#FFD645" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
