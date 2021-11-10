@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -29,6 +30,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +52,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.Inflater;
 
 public class textofsongwindoww extends AppCompatActivity implements AdapterForRec.ItemClickListener  {
@@ -76,7 +81,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     private ProgressBar progress;
     private int showchords; // 1 - показываем, 0 - нет
     private String tempchord;
-
+    private SeekBar seek;
     private RecyclerView songs;
 
     private int tonalnost=0; //тональность
@@ -310,6 +315,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
             @Override
             public void onClick(View view) {
                player.stop();
+               if(task !=null)
                task.cancel();
                 Intent intent = new Intent(textofsongwindoww.this, OptionsActivity.class);
                 if (isfromplaylist.equals("true")) {
@@ -346,6 +352,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
                 ImageView closedialog = (ImageView) promptsView.findViewById(R.id.closeimgbtn);
                 ImageView playbtn = (ImageView)promptsView.findViewById(R.id.playbtn);
+                 seek = (SeekBar)promptsView.findViewById(R.id.seekBar);
+                TextView alltime = (TextView)promptsView.findViewById(R.id.alltime);
+                TextView curtime = (TextView)promptsView.findViewById(R.id.momenttime);
                 final Dialog dialog = builder.create();
 
                 closedialog.setOnClickListener(new View.OnClickListener() {
@@ -383,10 +392,62 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
                                 progress.setVisibility(View.INVISIBLE);
                                  player =  MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp));
-
+                                 int songlength = player.getDuration();
+                                long minutes = (songlength / 1000)  / 60;
+                                int seconds = (int)((songlength / 1000) % 60);
+                                if(seconds<10)
+                                    alltime.setText(minutes+":0"+seconds);
+                                else
+                                    alltime.setText(minutes+":"+seconds);
                                 player.start();
 
 
+                                new Thread(new Runnable() {                                                     //новый поток для отображения процесса воспроизведени аудио
+                                    public void run() {
+
+                                        while(player.getDuration()!=player.getCurrentPosition()) {
+                                            try {
+                                                Thread.sleep(1000);
+                                                int currentpos = player.getCurrentPosition();
+                                                seek.post(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        seek.setProgress((currentpos * 100) /songlength);                  //отображение
+                                                    }
+                                                });
+
+                                                long curminutes = (currentpos / 1000)  / 60;
+                                                int curseconds = (int)((currentpos / 1000) % 60);
+                                                if(curseconds<10)
+                                                    curtime.post(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            curtime.setText(curminutes+":0"+curseconds);
+                                                        }
+                                                    });
+                                                else
+                                                    curtime.post(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            curtime.setText(curminutes+":"+curseconds);
+                                                        }
+                                                    });
+
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                    }
+                                }).start();
+
+                                seek.setOnTouchListener(new View.OnTouchListener() {
+                                    @Override
+                                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                                        player.seekTo((seek.getProgress()*songlength)/100);
+                                        return false;
+                                    }
+                                });
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                          @Override
@@ -398,11 +459,19 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                         @Override
                             public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
                             progress.setVisibility(View.VISIBLE);
-
+                            Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
                         }
                          });
                     }
                 });
+
+
+
+
+
+
+
+
 
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
                 params.y = 2100;
@@ -412,6 +481,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 dialog.show();
                 return false;
             }
+
+
+
         });
     }
 
