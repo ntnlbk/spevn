@@ -407,7 +407,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
                                         while(player.getDuration()!=player.getCurrentPosition()) {
                                             try {
-                                                Thread.sleep(2000);
+                                                Thread.sleep(1000);
                                                 int currentpos = player.getCurrentPosition();
                                                 seek.post(new Runnable() {
                                                     @Override
