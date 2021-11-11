@@ -492,7 +492,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                             @Override
                             public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
                                 progress.setVisibility(View.VISIBLE);
-                                Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
                             }
                         });
 
