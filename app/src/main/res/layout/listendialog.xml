@@ -6,7 +6,7 @@
     android:background="@drawable/listendialogstyle">
 
     <LinearLayout
-        android:layout_width="672dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/listendialogstyle"
         android:backgroundTint="#FFD645"
@@ -55,9 +55,9 @@
                 android:id="@+id/momenttime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="85dp"
+                android:layout_marginLeft="90dp"
                 android:fontFamily="@font/myfont"
-                android:text="00:00"
+                android:text="0:00"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="165dp"
                 android:fontFamily="@font/myfont"
-                android:text="00:00"
+                android:text="0:00"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
 
