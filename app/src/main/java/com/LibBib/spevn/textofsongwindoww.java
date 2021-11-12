@@ -355,6 +355,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                  seek = (SeekBar)promptsView.findViewById(R.id.seekBar);
                 TextView alltime = (TextView)promptsView.findViewById(R.id.alltime);
                 TextView curtime = (TextView)promptsView.findViewById(R.id.momenttime);
+                TextView nameofsong = (TextView)promptsView.findViewById(R.id.nameofsong);
+                nameofsong.setText(name);
                 final Dialog dialog = builder.create();
 
                 closedialog.setOnClickListener(new View.OnClickListener() {

@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/downarrow" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/nameofsong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16.13dp"
