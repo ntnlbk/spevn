@@ -100,6 +100,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
     String textt;
 
+    public textofsongwindoww() {
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,8 +264,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {
-                    char temp = a[i];
-                    String red = new String(String.valueOf(temp));
+                    String red;
                     i += searchchords(i, a);
                     red = tempchord;
                     red = "<font color=#" + color + ">" + red + "</font> <";
@@ -271,7 +273,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
             } else {
                 char temp = a[i];
-                String usuall = new String(String.valueOf(temp));
+                String usuall = String.valueOf(temp);
                 texttt = texttt + usuall;
             }
         }
@@ -427,6 +429,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 }else if (player.isPlaying() ){
 
                     playbtn.setImageResource(R.drawable.pausebtn);
+                } else if(!player.isPlaying() && istask){
+                    playbtn.setImageResource(R.drawable.playbtn);
+                    playbtn.setClickable(false);
                 }
                 if(player!=null){
                     int songlength = player.getDuration();
@@ -487,7 +492,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                                     progress.setVisibility(View.INVISIBLE);
 
                                     player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
-
+                                    playbtn.setClickable(true);
                                     player.start();
 
                                     int songlength = player.getDuration();
@@ -505,11 +510,16 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
                                     Toast.makeText(textofsongwindoww.this, "Запись песни отсутствует", Toast.LENGTH_SHORT).show();
+                                    playbtn.setClickable(true);
+                                    playbtn.setImageResource(R.drawable.playbtn);
                                     progress.setVisibility(View.INVISIBLE);
+                                    istask=false;
                                 }
                             }).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
+                                    playbtn.setClickable(false);
+                                    playbtn.setImageResource(R.drawable.playbtn);
                                     progress.setVisibility(View.VISIBLE);
                                     // Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
                                 }
@@ -519,22 +529,10 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                         else if(player.isPlaying()){
                             playbtn.setImageResource(R.drawable.playbtn);
                             player.pause();
-
-
-
                         }
-
                 }
 
                 });
-
-
-
-
-
-
-
-
 
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
                 params.y = 2100;
@@ -544,9 +542,6 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 dialog.show();
                 return false;
             }
-
-
-
         });
 
     }
@@ -791,10 +786,6 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
             e.printStackTrace();
         }
         showchords = Integer.parseInt(checkshowchods);
-
-
-
-
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {
@@ -852,11 +843,6 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
         }
         text.setMovementMethod(new ScrollingMovementMethod());
-
-
-
-
-
     }
     @Override
     public void onBackPressed() {
