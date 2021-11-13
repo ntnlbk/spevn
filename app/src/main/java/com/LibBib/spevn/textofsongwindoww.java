@@ -318,6 +318,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         optionsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(player!=null)
                player.stop();
                if(task !=null)
                task.cancel();
