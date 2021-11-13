@@ -64,7 +64,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     private String gloriabegin="G D C D <br/>";
 
     FileDownloadTask task;
-
+    private boolean istask=false;
     MediaPlayer player;
     private String gloria = "Gloria in excelsis Deo! Gloria, gloria. <br/>";
     private String sluhay = "О-о-о, Israel, sh’ma Israel!";
@@ -363,6 +363,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     @Override
                     public void onClick(View view) {
                         task.cancel();
+                        istask=false;
                         player.stop();
                         dialog.dismiss();
                     }
@@ -418,9 +419,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
                     }
                 });
-                if(task==null){
+                if(!istask){
                     playbtn.setImageResource(R.drawable.playbtn);
-                }else if (player.isPlaying()){
+                }else if (player.isPlaying() ){
 
                     playbtn.setImageResource(R.drawable.pausebtn);
                 }
@@ -442,7 +443,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
                             playbtn.setImageResource(R.drawable.pausebtn);
                         }
-                        else if(task==null){
+                        else if(istask==false){
 
                             playbtn.setImageResource(R.drawable.pausebtn);
 
@@ -454,50 +455,60 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                         StorageReference spaceRef = storageRef.child("songs");
 
 
-                        File temp = null;
-                        try {
-                            temp = File.createTempFile("test", ".mp3");
-                        } catch (IOException e) {
-                            e.printStackTrace();
+
+                        File finalTemp1 = new File("/data/data/com.LibBib.spevn/cache", name+".mp3");
+
+                        if (finalTemp1.exists() && !istask){
+                            istask=true;
+                            player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
+
+                            player.start();
+
+                            int songlength = player.getDuration();
+                            long minutes = (songlength / 1000) / 60;
+                            int seconds = (int) ((songlength / 1000) % 60);
+                            if (seconds < 10)
+                                alltime.setText(minutes + ":0" + seconds);
+                            else
+                                alltime.setText(minutes + ":" + seconds);
+
+                        } else if(!player.isPlaying()){
+                            istask=true;
+                            task = (FileDownloadTask) spaceRef.child(name + ".mp3").getFile(finalTemp1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                                    progress.setVisibility(View.INVISIBLE);
+
+                                    player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
+
+                                    player.start();
+
+                                    int songlength = player.getDuration();
+                                    long minutes = (songlength / 1000) / 60;
+                                    int seconds = (int) ((songlength / 1000) % 60);
+                                    if (seconds < 10)
+                                        alltime.setText(minutes + ":0" + seconds);
+                                    else
+                                        alltime.setText(minutes + ":" + seconds);
+
+
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(textofsongwindoww.this, "Запись песни отсутствует", Toast.LENGTH_SHORT).show();
+                                    progress.setVisibility(View.INVISIBLE);
+                                }
+                            }).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
+                                    progress.setVisibility(View.VISIBLE);
+                                    // Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-
-
-                        File finalTemp = temp;
-
-                        task = (FileDownloadTask) spaceRef.child(name + ".mp3").getFile(finalTemp).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-
-                                progress.setVisibility(View.INVISIBLE);
-                                player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp));
-
-                                player.start();
-
-                                int songlength = player.getDuration();
-                                long minutes = (songlength / 1000) / 60;
-                                int seconds = (int) ((songlength / 1000) % 60);
-                                if (seconds < 10)
-                                    alltime.setText(minutes + ":0" + seconds);
-                                else
-                                    alltime.setText(minutes + ":" + seconds);
-
-
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(textofsongwindoww.this, "Запись песни отсутствует", Toast.LENGTH_SHORT).show();
-                                progress.setVisibility(View.INVISIBLE);
-                            }
-                        }).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
-                                progress.setVisibility(View.VISIBLE);
-                               // Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
                         }
                         else if(player.isPlaying()){
                             playbtn.setImageResource(R.drawable.playbtn);
@@ -845,6 +856,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     public void onBackPressed() {
         if(task!=null)
        task.cancel();
+        istask=false;
         if(player!=null)
        player.stop();
         super.onBackPressed();
