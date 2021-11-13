@@ -434,7 +434,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     playbtn.setImageResource(R.drawable.playbtn);
                     playbtn.setClickable(false);
                 }
-                if(player!=null){
+                if(player!=null && player.isPlaying()){
                     int songlength = player.getDuration();
                     long minutes = (songlength / 1000) / 60;
                     int seconds = (int) ((songlength / 1000) % 60);
