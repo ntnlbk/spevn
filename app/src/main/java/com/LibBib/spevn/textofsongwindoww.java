@@ -15,6 +15,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -362,6 +364,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 closedialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(task!=null)
                         task.cancel();
                         istask=false;
                         player.stop();
@@ -438,7 +441,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 playbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(player!=null && player.isPlaying()==false){
+                        if(player!=null && player.isPlaying()==false &&istask){
                             player.start();
 
                             playbtn.setImageResource(R.drawable.pausebtn);
@@ -472,7 +475,10 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                             else
                                 alltime.setText(minutes + ":" + seconds);
 
-                        } else if(!player.isPlaying()){
+                        } else if(!hasConnection(textofsongwindoww.this)){
+                            Toast.makeText(textofsongwindoww.this,"Проверьте подключение к интернету",Toast.LENGTH_SHORT).show();
+                            playbtn.setImageResource(R.drawable.playbtn);
+                        }else if(!player.isPlaying()){
                             istask=true;
                             task = (FileDownloadTask) spaceRef.child(name + ".mp3").getFile(finalTemp1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
@@ -860,6 +866,27 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         if(player!=null)
        player.stop();
         super.onBackPressed();
+    }
+
+    public static boolean hasConnection(final Context context)
+    {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
 }
 
