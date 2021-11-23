@@ -370,6 +370,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                         if(task!=null)
                         task.cancel();
                         istask=false;
+                        if(player!= null)
                         player.stop();
                         dialog.dismiss();
                     }
