@@ -496,7 +496,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                                     player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
                                     playbtn.setClickable(true);
                                     player.start();
-
+                                    playbtn.setImageResource(R.drawable.pausebtn);
                                     int songlength = player.getDuration();
                                     long minutes = (songlength / 1000) / 60;
                                     int seconds = (int) ((songlength / 1000) % 60);
