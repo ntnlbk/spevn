@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addsongactivity">
+
+    <ImageView
+        android:id="@+id/backbtn1"
+        android:layout_width="77.76dp"
+        android:layout_height="65.93dp"
+        android:paddingLeft="30.46dp"
+        android:paddingTop="24.63dp"
+        android:paddingRight="30.46dp"
+        android:paddingBottom="24.63dp"
+        app:srcCompat="@drawable/yellowback" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/myfont"
+        android:text="Добавление песни"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/textView15"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="59dp"
+        android:fontFamily="@font/myfont"
+        android:text="Заполните небольшую форму"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="normal" />
+</RelativeLayout>

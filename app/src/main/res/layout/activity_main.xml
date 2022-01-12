@@ -9,6 +9,7 @@
     android:background="#00E5E5E5"
     tools:context=".MainActivity"
     tools:openDrawer="start"
+
     >
     <!--  tools:openDrawer="start"  для того, чтобы видеть в редакторе navigationview -->
 
@@ -263,6 +264,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/addsong"
+                android:layout_width="194dp"
+                android:layout_height="34dp"
+
+                android:layout_alignBottom="@id/randomsong"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="-58.5dp"
+                android:fontFamily="@font/myfont"
+                android:gravity="center_vertical"
+                android:text="Предложить песню"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/randomsong"
