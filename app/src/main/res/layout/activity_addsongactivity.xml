@@ -1,43 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".addsongactivity">
 
-    <ImageView
-        android:id="@+id/backbtn1"
-        android:layout_width="77.76dp"
-        android:layout_height="65.93dp"
-        android:paddingLeft="30.46dp"
-        android:paddingTop="24.63dp"
-        android:paddingRight="30.46dp"
-        android:paddingBottom="24.63dp"
-        app:srcCompat="@drawable/yellowback" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="88dp"
-        android:fontFamily="@font/myfont"
-        android:text="Добавление песни"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textView15"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="59dp"
-        android:fontFamily="@font/myfont"
-        android:text="Заполните небольшую форму"
-        android:textColor="#000000"
-        android:textSize="18dp"
-        android:textStyle="normal" />
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/backbtn1"
+            android:layout_width="77.93dp"
+            android:layout_height="65.93dp"
+            android:paddingLeft="30.63dp"
+            android:paddingTop="24.63dp"
+            android:paddingRight="30.63dp"
+            android:paddingBottom="24.63dp"
+            app:srcCompat="@drawable/yellowback" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="22.17dp"
+            android:fontFamily="@font/myfont"
+            android:text="Добавление песни"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/myfont"
+            android:text="Заполните небольшую форму"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/myfont"
+            android:text="Ваше имя"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="26dp"
+            android:background="@drawable/edittextbackground"
+            android:ems="10"
+            android:fontFamily="@font/myfont"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingLeft="21dp"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/myfont"
+            android:text="Автор песни (если известно)"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="26dp"
+            android:background="@drawable/edittextbackground"
+            android:ems="10"
+            android:fontFamily="@font/myfont"
+            android:hint="Author"
+            android:inputType="textPersonName"
+            android:paddingLeft="21dp"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/myfont"
+            android:text="Текст и аккорды"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="match_parent"
+            android:layout_height="216dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="26dp"
+            android:background="@drawable/edittextbackground"
+            android:ems="10"
+            android:fontFamily="@font/myfont"
+            android:hint="text"
+            android:inputType="textMultiLine"
+            android:paddingLeft="21dp"
+            android:paddingRight="21dp"
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+</ScrollView>
