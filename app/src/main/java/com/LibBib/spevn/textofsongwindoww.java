@@ -15,6 +15,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
@@ -64,8 +66,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     private String gloriabegin="G D C D <br/>";
 
     FileDownloadTask task;
-
-    MediaPlayer player = new MediaPlayer();
+    private boolean istask=false;
+    MediaPlayer player;
     private String gloria = "Gloria in excelsis Deo! Gloria, gloria. <br/>";
     private String sluhay = "О-о-о, Israel, sh’ma Israel!";
     private  String extra;
@@ -97,6 +99,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
 
     String textt;
+
+    public textofsongwindoww() {
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -259,8 +264,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {
-                    char temp = a[i];
-                    String red = new String(String.valueOf(temp));
+                    String red;
                     i += searchchords(i, a);
                     red = tempchord;
                     red = "<font color=#" + color + ">" + red + "</font> <";
@@ -269,7 +273,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
             } else {
                 char temp = a[i];
-                String usuall = new String(String.valueOf(temp));
+                String usuall = String.valueOf(temp);
                 texttt = texttt + usuall;
             }
         }
@@ -314,6 +318,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         optionsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(player!=null)
                player.stop();
                if(task !=null)
                task.cancel();
@@ -355,123 +360,181 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                  seek = (SeekBar)promptsView.findViewById(R.id.seekBar);
                 TextView alltime = (TextView)promptsView.findViewById(R.id.alltime);
                 TextView curtime = (TextView)promptsView.findViewById(R.id.momenttime);
+                TextView nameofsong = (TextView)promptsView.findViewById(R.id.nameofsong);
+                nameofsong.setText(name);
                 final Dialog dialog = builder.create();
 
                 closedialog.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(task!=null)
                         task.cancel();
+                        istask=false;
+                        if(player!= null)
                         player.stop();
                         dialog.dismiss();
                     }
                 });
+                seek.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View view, MotionEvent motionEvent) {
+                        if(player!=null){
+                            int songlength = player.getDuration();
+                        player.seekTo((seek.getProgress() * songlength) / 100);
+                        }
+                        return false;
+                    }
+                });
+                Thread timer = new Thread(new Runnable() {                                                     //новый поток для отображения процесса воспроизведени аудио
+                    public void run() {
+                        while (true)
+                        if(player!=null)
+                        while (player.getDuration() != player.getCurrentPosition()) {
+
+                            try {
+                                Thread.sleep(100);
+                                int currentpos = player.getCurrentPosition();
+                                int songlength = player.getDuration();
+                                seek.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        seek.setProgress((currentpos * 100) / songlength);                  //отображение
+                                    }
+                                });
+
+                                long curminutes = (currentpos / 1000) / 60;
+                                int curseconds = (int) ((currentpos / 1000) % 60);
+                                if (curseconds < 10)
+                                    curtime.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            curtime.setText(curminutes + ":0" + curseconds);
+                                        }
+                                    });
+                                else
+                                    curtime.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            curtime.setText(curminutes + ":" + curseconds);
+                                        }
+                                    });
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                });
+                if(!istask){
+                    playbtn.setImageResource(R.drawable.playbtn);
+                }else if (player.isPlaying() ){
+
+                    playbtn.setImageResource(R.drawable.pausebtn);
+                } else if(!player.isPlaying() && istask){
+                    playbtn.setImageResource(R.drawable.playbtn);
+                    playbtn.setClickable(false);
+                }
+                if(player!=null && player.isPlaying()){
+                    int songlength = player.getDuration();
+                    long minutes = (songlength / 1000) / 60;
+                    int seconds = (int) ((songlength / 1000) % 60);
+                    if (seconds < 10)
+                        alltime.setText(minutes + ":0" + seconds);
+                    else
+                        alltime.setText(minutes + ":" + seconds);
+                }
+                timer.start();
                 playbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                            FirebaseStorage storage = FirebaseStorage.getInstance();
-                            StorageReference storageRef = storage.getReference();
-                            StorageReference spaceRef = storageRef.child("songs");
+                        if(player!=null && player.isPlaying()==false &&istask){
+                            player.start();
 
-
-
-
-
-                            File temp = null;
-                            try {
-                                temp = File.createTempFile("test", ".mp3");
-                            } catch (IOException e) {
-                                 e.printStackTrace();
-                            }
-
-
-                            File finalTemp = temp;
-
-                            task = (FileDownloadTask) spaceRef.child(name+".mp3").getFile(finalTemp).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-
-                                progress.setVisibility(View.INVISIBLE);
-                                 player =  MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp));
-                                 int songlength = player.getDuration();
-                                long minutes = (songlength / 1000)  / 60;
-                                int seconds = (int)((songlength / 1000) % 60);
-                                if(seconds<10)
-                                    alltime.setText(minutes+":0"+seconds);
-                                else
-                                    alltime.setText(minutes+":"+seconds);
-                                player.start();
-
-
-                                new Thread(new Runnable() {                                                     //новый поток для отображения процесса воспроизведени аудио
-                                    public void run() {
-
-                                        while(player.getDuration()!=player.getCurrentPosition()) {
-                                            try {
-                                                Thread.sleep(1000);
-                                                int currentpos = player.getCurrentPosition();
-                                                seek.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        seek.setProgress((currentpos * 100) /songlength);                  //отображение
-                                                    }
-                                                });
-
-                                                long curminutes = (currentpos / 1000)  / 60;
-                                                int curseconds = (int)((currentpos / 1000) % 60);
-                                                if(curseconds<10)
-                                                    curtime.post(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            curtime.setText(curminutes+":0"+curseconds);
-                                                        }
-                                                    });
-                                                else
-                                                    curtime.post(new Runnable() {
-                                                        @Override
-                                                        public void run() {
-                                                            curtime.setText(curminutes+":"+curseconds);
-                                                        }
-                                                    });
-
-                                            } catch (InterruptedException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-
-                                    }
-                                }).start();
-
-                                seek.setOnTouchListener(new View.OnTouchListener() {
-                                    @Override
-                                    public boolean onTouch(View view, MotionEvent motionEvent) {
-                                        player.seekTo((seek.getProgress()*songlength)/100);
-                                        return false;
-                                    }
-                                });
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                         @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(textofsongwindoww.this,"Запись песни отсутствует", Toast.LENGTH_SHORT).show();
-                             progress.setVisibility(View.INVISIBLE);
+                            playbtn.setImageResource(R.drawable.pausebtn);
                         }
+                        else if(istask==false){
+
+                            playbtn.setImageResource(R.drawable.pausebtn);
+
+
+
+                        player = new MediaPlayer();
+                        FirebaseStorage storage = FirebaseStorage.getInstance();
+                        StorageReference storageRef = storage.getReference();
+                        StorageReference spaceRef = storageRef.child("songs");
+
+
+
+                        File finalTemp1 = new File("/data/data/com.LibBib.spevn/cache", name+".mp3");
+
+                        if (finalTemp1.exists() && !istask){
+                            istask=true;
+                            player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
+
+                            player.start();
+
+                            int songlength = player.getDuration();
+                            long minutes = (songlength / 1000) / 60;
+                            int seconds = (int) ((songlength / 1000) % 60);
+                            if (seconds < 10)
+                                alltime.setText(minutes + ":0" + seconds);
+                            else
+                                alltime.setText(minutes + ":" + seconds);
+
+                        } else if(!hasConnection(textofsongwindoww.this)){
+                            Toast.makeText(textofsongwindoww.this,"Проверьте подключение к интернету",Toast.LENGTH_SHORT).show();
+                            playbtn.setImageResource(R.drawable.playbtn);
+                        }else if(!player.isPlaying()){
+                            istask=true;
+                            task = (FileDownloadTask) spaceRef.child(name + ".mp3").getFile(finalTemp1).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+
+                                    progress.setVisibility(View.INVISIBLE);
+
+                                    player = MediaPlayer.create(textofsongwindoww.this, Uri.fromFile(finalTemp1));
+                                    playbtn.setClickable(true);
+                                    player.start();
+                                    playbtn.setImageResource(R.drawable.pausebtn);
+                                    int songlength = player.getDuration();
+                                    long minutes = (songlength / 1000) / 60;
+                                    int seconds = (int) ((songlength / 1000) % 60);
+                                    if (seconds < 10)
+                                        alltime.setText(minutes + ":0" + seconds);
+                                    else
+                                        alltime.setText(minutes + ":" + seconds);
+
+
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(textofsongwindoww.this, "Запись песни отсутствует", Toast.LENGTH_SHORT).show();
+                                    playbtn.setClickable(true);
+                                    playbtn.setImageResource(R.drawable.playbtn);
+                                    progress.setVisibility(View.INVISIBLE);
+                                    istask=false;
+                                }
                             }).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                            public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
-                            progress.setVisibility(View.VISIBLE);
-                            Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
+                                @Override
+                                public void onProgress(@NonNull FileDownloadTask.TaskSnapshot snapshot) {
+                                    playbtn.setClickable(false);
+                                    playbtn.setImageResource(R.drawable.playbtn);
+                                    progress.setVisibility(View.VISIBLE);
+                                    // Toast.makeText(textofsongwindoww.this, String.valueOf(snapshot.getBytesTransferred()), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                         });
-                    }
+                        }
+                        else if(player.isPlaying()){
+                            playbtn.setImageResource(R.drawable.playbtn);
+                            player.pause();
+                        }
+                }
+
                 });
-
-
-
-
-
-
-
-
 
                 WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
                 params.y = 2100;
@@ -481,10 +544,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 dialog.show();
                 return false;
             }
-
-
-
         });
+
     }
 
     public int searchchords(int i, char[] a){                                                           // главная функция транспонирования, тут определяется длинна аккорда, потом ее замена по
@@ -727,10 +788,6 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
             e.printStackTrace();
         }
         showchords = Integer.parseInt(checkshowchods);
-
-
-
-
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {
@@ -788,18 +845,36 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
         }
         text.setMovementMethod(new ScrollingMovementMethod());
-
-
-
-
-
     }
     @Override
     public void onBackPressed() {
         if(task!=null)
        task.cancel();
+        istask=false;
+        if(player!=null)
        player.stop();
         super.onBackPressed();
+    }
+
+    public static boolean hasConnection(final Context context)
+    {
+        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
     }
 }
 

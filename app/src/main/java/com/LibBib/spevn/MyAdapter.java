@@ -45,7 +45,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Filterable {
     private Boolean temp = false;
     private Boolean isfromplaylist =false;
     private RelativeLayout layout;
-    private Activity activity;
+
     private CheckBox checkBox;
     private int id = R.layout.fon;
     private int checked;
