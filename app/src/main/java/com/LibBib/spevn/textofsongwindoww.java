@@ -100,8 +100,6 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
 
     String textt;
 
-    public textofsongwindoww() {
-    }
 
     @SuppressLint("ClickableViewAccessibility")
     @Override

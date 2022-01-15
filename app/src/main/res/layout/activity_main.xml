@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="#00E5E5E5"
     tools:context=".MainActivity"
+    tools:openDrawer="start"
 
     >
     <!--  tools:openDrawer="start"  для того, чтобы видеть в редакторе navigationview -->
@@ -262,124 +263,87 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFD645">
+            android:background="#FFFFFF">
+
+            <TextView
+                android:id="@+id/addsong"
+                android:layout_width="194dp"
+                android:layout_height="34dp"
+
+                android:layout_alignBottom="@id/randomsong"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="-58.5dp"
+                android:fontFamily="@font/myfont"
+                android:gravity="center_vertical"
+                android:text="Предложить песню"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/randomsong"
                 android:layout_width="194dp"
                 android:layout_height="34dp"
-                android:layout_alignLeft="@id/imageView4"
+
                 android:layout_alignBottom="@id/optionstextbtn"
-                android:layout_marginStart="28.25dp"
-                android:layout_marginLeft="28.25dp"
+                android:layout_marginStart="60dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-58.5dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
                 android:text="Случайная песня"
-                android:textColor="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="13.5dp"
-                android:layout_height="13.5dp"
+                android:textColor="#000000" />
 
 
-                android:layout_alignBottom="@id/imageView9"
-                android:layout_marginStart="56dp"
 
 
-                android:layout_marginLeft="56dp"
-                android:layout_marginBottom="-58.5dp"
-                ads:srcCompat="@drawable/random" />
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="13.5dp"
-                android:layout_height="13.5dp"
-
-
-                android:layout_alignBottom="@id/imageView7"
-                android:layout_marginStart="56dp"
-
-
-                android:layout_marginLeft="56dp"
-                android:layout_marginBottom="-59dp"
-                ads:srcCompat="@drawable/settingsicon" />
-
-            <TextView
+                    <TextView
                 android:id="@+id/optionstextbtn"
                 android:layout_width="194dp"
                 android:layout_height="34dp"
-                android:layout_alignLeft="@id/imageView4"
+
                 android:layout_alignBottom="@id/aboutustextbtn"
-                android:layout_marginStart="28.25dp"
-                android:layout_marginLeft="28.25dp"
+                        android:layout_marginStart="60dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-59.5dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
                 android:text="Настройки"
-                android:textColor="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="13.5dp"
-                android:layout_height="13.5dp"
+                android:textColor="#000000" />
 
 
-                android:layout_alignBottom="@id/imageView5"
-                android:layout_marginStart="56dp"
-
-
-                android:layout_marginLeft="56dp"
-                android:layout_marginBottom="-59dp"
-                ads:srcCompat="@drawable/informationicon" />
 
 
             <TextView
                 android:id="@+id/aboutustextbtn"
                 android:layout_width="194dp"
                 android:layout_height="34dp"
-                android:layout_alignLeft="@id/imageView4"
+
                 android:layout_alignBottom="@id/playlisttextbtn"
-                android:layout_marginStart="28.25dp"
-                android:layout_marginLeft="28.25dp"
+                android:layout_marginStart="60dp"
+
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-67dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
                 android:text="Информация
 "
-                android:textColor="#FFFFFF" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/playlisttextbtn"
                 android:layout_width="196dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/imageView4"
+
                 android:layout_alignBottom="@id/maintextbtn"
-                android:layout_marginStart="28.25dp"
-                android:layout_marginLeft="28.25dp"
+
+                android:layout_marginStart="60dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-58dp"
                 android:fontFamily="@font/myfont"
                 android:text="Плейлисты"
-                android:textColor="#FFFFFF" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="13.5dp"
-                android:layout_height="13.5dp"
+                android:textColor="#000000" />
 
 
-                android:layout_alignBottom="@id/imageView4"
-                android:layout_marginStart="56dp"
-
-
-                android:layout_marginLeft="56dp"
-                android:layout_marginBottom="-58dp"
-                ads:srcCompat="@drawable/playlisticon" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -400,33 +364,21 @@
                 android:layout_marginTop="53.17dp"
                 android:fontFamily="@font/myfont"
                 android:text="Спеўнік"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="13.5dp"
-                android:layout_height="13.5dp"
 
-
-                android:layout_marginStart="56dp"
-                android:layout_marginLeft="56dp"
-
-
-                android:layout_marginTop="146dp"
-                ads:srcCompat="@drawable/homeicon" />
 
             <TextView
                 android:id="@+id/maintextbtn"
                 android:layout_width="196dp"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/imageView4"
-                android:layout_marginStart="28.25dp"
-                android:layout_marginLeft="28.25dp"
+
+                android:layout_marginStart="60dp"
                 android:layout_marginTop="142dp"
                 android:fontFamily="@font/myfont"
                 android:text="Главная"
-                android:textColor="#FFFFFF" />
+                android:textColor="#000000" />
         </RelativeLayout>
     </com.google.android.material.navigation.NavigationView>
 

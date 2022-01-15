@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private int a;
     private String[] namesofsongs, texts, temp2, types, nameofsongsdin;
     private ListView listt;
-    private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn,  aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn;
+    private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn,  aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn;
     private EditText searchtext;
 
     private Boolean longclick=false;
@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         close=(ImageButton)findViewById(R.id.closebtn);
         maintextbtn=(TextView)findViewById(R.id.maintextbtn);
         playlisttextbtn=(TextView)findViewById(R.id.playlisttextbtn);
-
+        addsongbtn=(TextView)findViewById(R.id.addsong);
         aboutustextbtn=(TextView)findViewById(R.id.aboutustextbtn);
         optionstextbtn=(TextView)findViewById(R.id.optionstextbtn);
         layout=(RelativeLayout)findViewById(R.id.relative);
@@ -564,6 +564,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
                 startActivity(intent);
 
+            }
+        });
+        addsongbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, addsongactivity.class);
+                startActivity(intent);
             }
         });
         optionstextbtn.setOnClickListener(new View.OnClickListener() {
