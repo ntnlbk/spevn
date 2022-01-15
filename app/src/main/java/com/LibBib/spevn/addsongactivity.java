@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,8 @@ public class addsongactivity extends AppCompatActivity {
     private Button sendbtn;
 
     private EditText nameedit, authoredit, textedit, nameofsongedit, linkedit;
+
+    private ProgressBar progressBar;
 
     private Uri textUri = null;
     private Uri musUri = null;
@@ -69,6 +72,7 @@ public class addsongactivity extends AppCompatActivity {
         nameofsongedit=(EditText)findViewById(R.id.nameofsongedit);
         linkedit=(EditText)findViewById(R.id.linkedit);
         cancelmusbtn=(TextView)findViewById(R.id.canselmus);
+        progressBar=(ProgressBar)findViewById(R.id.progressBar5);
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,7 +119,7 @@ public class addsongactivity extends AppCompatActivity {
                 if(!hasConnection(addsongactivity.this))
                     Toast.makeText(addsongactivity.this, "Нет подключения к интернету", Toast.LENGTH_SHORT).show();
                 else if(!name.equals("") && !nameofsong.equals("")){
-
+                    progressBar.setVisibility(View.VISIBLE);
                     String filename = name+ System.currentTimeMillis();
 
                     FileOutputStream fos;
@@ -195,6 +199,7 @@ public class addsongactivity extends AppCompatActivity {
                             Toast.makeText(addsongactivity.this, "Данные успешно отправлены, спасибо!", Toast.LENGTH_SHORT).show();
                              File file = new File(mainfile.getPath());
                              file.delete();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     });
 
