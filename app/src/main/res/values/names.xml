@@ -2,7 +2,7 @@
 <resources>
     <string-array name="names">
         <item>Аллелюя, Езус смерць перамог</item>
-        <item>Анёл Панскі</item>
+
         <item>Ахвярую Табе</item>
         <item>Баранку Божы(h)</item>
         <item>Баранку Божы(D)</item>
@@ -128,7 +128,6 @@
     </string-array>
     <string-array name="typesofsongs">
         <item>Длинные</item>//Аллелюя, Езус смерць перамог
-        <item>Части имши, длинные</item>//Анёл Панскі
         <item>Короткие</item> //Ахвярую Табе
         <item>Части имши, короткие</item> //Баранку Божы(h)
         <item>Части имши, короткие</item> //Баранку Божы(D)
