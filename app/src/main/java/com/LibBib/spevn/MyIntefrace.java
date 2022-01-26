@@ -16,5 +16,6 @@ public interface MyIntefrace {
         void addtoizbr(ArrayList<String> positions);
         void addtoplalist(ArrayList<String> namesofsongstoadd);
         void addsongstoplaylist(String[] namesofsongstoadd, String nameofplaylist);
+        void audiochoose(String name);
 
 }

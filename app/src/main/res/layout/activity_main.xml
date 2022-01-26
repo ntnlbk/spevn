@@ -264,7 +264,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
+            <TextView
+                android:id="@+id/helpbtn"
+                android:layout_width="194dp"
+                android:layout_height="34dp"
 
+                android:layout_alignBottom="@id/addsong"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="-58.5dp"
+                android:fontFamily="@font/myfont"
+                android:gravity="center_vertical"
+                android:text="Помочь проекту"
+                android:textColor="#000000" />
             <TextView
                 android:id="@+id/addsong"
                 android:layout_width="194dp"
@@ -296,13 +308,13 @@
 
 
 
-                    <TextView
+            <TextView
                 android:id="@+id/optionstextbtn"
                 android:layout_width="194dp"
                 android:layout_height="34dp"
 
                 android:layout_alignBottom="@id/aboutustextbtn"
-                        android:layout_marginStart="60dp"
+                android:layout_marginStart="60dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-59.5dp"
                 android:fontFamily="@font/myfont"
@@ -379,6 +391,7 @@
                 android:fontFamily="@font/myfont"
                 android:text="Главная"
                 android:textColor="#000000" />
+
         </RelativeLayout>
     </com.google.android.material.navigation.NavigationView>
 

@@ -128,7 +128,7 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
             for(int i = 0; i < namesofsongs2.length; i++){
                 typesofsongs.put(namesofsongs2[i], types[i]);
             }
-            final MyAdapter adapter = new MyAdapter(this, temp, temp, "Playlist", false, new ArrayList<String>(), typesofsongs, true, name);
+            final MyAdapter adapter = new MyAdapter(this, temp, temp, "Playlist", false, new ArrayList<String>(), typesofsongs, true, name,false);
             songs.setAdapter(adapter);
             more.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -399,6 +399,11 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void audiochoose(String name) {
+
     }
 
     @Override

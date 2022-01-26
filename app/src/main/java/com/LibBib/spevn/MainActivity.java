@@ -62,33 +62,33 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private int a;
     private String[] namesofsongs, texts, temp2, types, nameofsongsdin;
     private ListView listt;
-    private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn,  aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn;
+    private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn, aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn, helpbtn;
     private EditText searchtext;
-
-    private Boolean longclick=false;
+private Boolean audiochoose = false;
+    private Boolean longclick = false;
     private AdView mAdView;
-    private ImageButton  menubtn, acceptbtn;
+    private ImageButton menubtn, acceptbtn;
     private DrawerLayout drawer;
-    private ArrayList<String>listItems;
+    private ArrayList<String> listItems;
     private MyAdapter adapter2;
     private ProgressBar progressBar;
     private RelativeLayout layout;
     private Boolean menutopopen = false;
     private ImageButton close, morebtnchecked;
-    private  String playlistsongs = "sffdsf", filter ="";
+    private String playlistsongs = "sffdsf", filter = "";
     private ArrayList<String> filtry = new ArrayList<>();
     private Dialog maindialog;
     private Map<String, String> typesofsongs = new HashMap<>();
-    private int filtr=0;
+    private int filtr = 0;
 
 
     @Override
-    public void mymethod(){
+    public void mymethod() {
         close.setVisibility(View.VISIBLE);
         morebtnchecked.setVisibility(View.VISIBLE);
 
-        menutopopen=true;
-        longclick=true;
+        menutopopen = true;
+        longclick = true;
         DrawerLayout.LayoutParams lp = new DrawerLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
         float dip = 66f;
         Resources r = getResources();
@@ -97,29 +97,30 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 dip,
                 r.getDisplayMetrics()
         );
-        lp.setMargins(0, (int) px,0,0);
+        lp.setMargins(0, (int) px, 0, 0);
         layout.setLayoutParams(lp);
     }
+
     @Override
-    public void mymethoddestroy(){
+    public void mymethoddestroy() {
         close.setVisibility(View.INVISIBLE);
         morebtnchecked.setVisibility(View.INVISIBLE);
         acceptbtn.setVisibility(View.INVISIBLE);
         DrawerLayout.LayoutParams lp = new DrawerLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        longclick=false;
-        lp.topMargin=0;
+        longclick = false;
+        lp.topMargin = 0;
         layout.setLayoutParams(lp);
-        menutopopen=false;
+        menutopopen = false;
     }
 
     @Override
-    public void progressbar(){
+    public void progressbar() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
     }
 
     @Override
     public void updatetextchecked(int i) {
-        howmanycheckedtxt.setText(String.valueOf(i)+" выбрано");
+        howmanycheckedtxt.setText(String.valueOf(i) + " выбрано");
     }
 
     @Override
@@ -127,8 +128,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         ArrayList<String> allready = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("Избранное"))); // проверяем наличие песен в плейлисте
-            String src="";
-            while ((src = br.readLine()) != null){
+            String src = "";
+            while ((src = br.readLine()) != null) {
                 allready.add(src);
             }
         } catch (FileNotFoundException e) {
@@ -140,18 +141,18 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("Избранное", MODE_APPEND)));
-            for(int i=0; i<positions.size(); i++){
-                if(allready.contains(positions.get(i))==false){
-                bw.write(positions.get(i));
-                bw.newLine();
-                } else{
+            for (int i = 0; i < positions.size(); i++) {
+                if (allready.contains(positions.get(i)) == false) {
+                    bw.write(positions.get(i));
+                    bw.newLine();
+                } else {
                     Toast.makeText(MainActivity.this, "Песня " + positions.get(i) + " уже есть в избранном", Toast.LENGTH_SHORT).show();
                 }
 
             }
             bw.close();
             if (playlistsongs.equals("sadfsadf") == false || longclick)
-            onBackPressed();
+                onBackPressed();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -161,25 +162,25 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
     @Override
     public void addtoplalist(final ArrayList<String> namesofsongstoadd) {
-        temp2 =  namesofsongstoadd.toArray(new String[0]);
-        LayoutInflater inflater = (LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+        temp2 = namesofsongstoadd.toArray(new String[0]);
+        LayoutInflater inflater = (LayoutInflater) MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View promptsView = inflater.inflate(R.layout.addtoplaylistdialog, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this, R.style.DialogStyle);
         builder.setView(promptsView);
 
-        final ListView playlists = (ListView)promptsView.findViewById(R.id.playlists);
+        final ListView playlists = (ListView) promptsView.findViewById(R.id.playlists);
         TextView close = (TextView) promptsView.findViewById(R.id.closetextbtn);
-        Button addnewplaylist = (Button)promptsView.findViewById(R.id.addnewplaylist);
+        Button addnewplaylist = (Button) promptsView.findViewById(R.id.addnewplaylist);
         final ArrayList<String> namesofplaylists = new ArrayList<String>();
         final Map<String, Integer> chislo = new HashMap<String, Integer>();
 
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("namesofplaylists")));
-            String src= "";
-            while ((src = br.readLine()) != null){
+            String src = "";
+            while ((src = br.readLine()) != null) {
                 namesofplaylists.add(src);
             }
-            if (namesofplaylists.contains("Избранное")==false)
+            if (namesofplaylists.contains("Избранное") == false)
                 namesofplaylists.add(0, "Избранное");
             br.close();
         } catch (FileNotFoundException e) {
@@ -190,13 +191,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             namesofplaylists.add(0, "Избранное");
         }
 
-        for(int i =0; i<namesofplaylists.size(); i++){
+        for (int i = 0; i < namesofplaylists.size(); i++) {
             String name = namesofplaylists.get(i);
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(name)));
-                String src= "";
-                int temp =0;
-                while ((src = br.readLine()) != null){
+                String src = "";
+                int temp = 0;
+                while ((src = br.readLine()) != null) {
                     temp++;
                 }
                 chislo.put(name, temp);
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
 
 
-        if(namesofplaylists.size()>5){
+        if (namesofplaylists.size() > 5) {
             ViewGroup.LayoutParams params = playlists.getLayoutParams();
             float dip = 230f;
             Resources r = getResources();
@@ -219,16 +220,15 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     dip,
                     r.getDisplayMetrics()
             );
-            params.height =(int)px;
+            params.height = (int) px;
             playlists.setLayoutParams(params);
             playlists.requestLayout();
         }
-        String[] temp =  namesofplaylists.toArray(new String[0]);
+        String[] temp = namesofplaylists.toArray(new String[0]);
         final Dialog dialog = builder.create();
-        maindialog=dialog;
-        AdapterForPlaylist adapter = new AdapterForPlaylist  (this, temp, temp,chislo, true, temp2);
+        maindialog = dialog;
+        AdapterForPlaylist adapter = new AdapterForPlaylist(this, temp, temp, chislo, true, temp2);
         playlists.setAdapter(adapter);
-
 
 
         close.setOnClickListener(new View.OnClickListener() {
@@ -245,15 +245,15 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(MainActivity.this);
                 mDialogBuilder.setView(promptsView);
                 final EditText userInput = (EditText) promptsView.findViewById(R.id.input_text);
-                final Button okbtn = (Button)promptsView.findViewById(R.id.savebtn);
-                final Button closebtn = (Button)promptsView.findViewById(R.id.closebtndialog);
+                final Button okbtn = (Button) promptsView.findViewById(R.id.savebtn);
+                final Button closebtn = (Button) promptsView.findViewById(R.id.closebtndialog);
                 final AlertDialog alertDialog = mDialogBuilder.create();
                 okbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         try {
                             String name = userInput.getText().toString();
-                            if(name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
+                            if (name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
                                 Toast.makeText(MainActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
                             else {
                                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
@@ -262,8 +262,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                                 bw.close();
                                 namesofplaylists.add(name);
                                 chislo.put(name, 0);
-                                String[] temp =  namesofplaylists.toArray(new String[0]);
-                                AdapterForPlaylist adapter = new AdapterForPlaylist  (MainActivity.this, temp, temp,chislo, true, temp2);
+                                String[] temp = namesofplaylists.toArray(new String[0]);
+                                AdapterForPlaylist adapter = new AdapterForPlaylist(MainActivity.this, temp, temp, chislo, true, temp2);
                                 playlists.setAdapter(adapter);
                             }
                         } catch (FileNotFoundException e) {
@@ -272,7 +272,6 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                             e.printStackTrace();
                         }
                         alertDialog.dismiss();
-
 
 
                     }
@@ -293,8 +292,6 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         });
 
 
-
-
         dialog.show();
     }
 
@@ -304,8 +301,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         ArrayList<String> allready = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(nameofplaylist))); // проверяем наличие песен в плейлисте
-            String src="";
-            while ((src = br.readLine()) != null){
+            String src = "";
+            while ((src = br.readLine()) != null) {
                 allready.add(src);
             }
         } catch (FileNotFoundException e) {
@@ -318,11 +315,11 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(nameofplaylist, MODE_APPEND)));
-            for(int i =0; i< namesofsongstoadd.length; i++){
-                if(allready.contains(namesofsongstoadd[i])==false){
-                bw.write(namesofsongstoadd[i]);
-                bw.newLine();
-                } else{
+            for (int i = 0; i < namesofsongstoadd.length; i++) {
+                if (allready.contains(namesofsongstoadd[i]) == false) {
+                    bw.write(namesofsongstoadd[i]);
+                    bw.newLine();
+                } else {
                     Toast.makeText(MainActivity.this, "Песня " + namesofsongstoadd[i] + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -335,6 +332,14 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         onBackPressed();
     }
 
+    @Override
+    public void audiochoose(String name) {
+        Intent intent = new Intent();
+        intent.putExtra("name",name);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -344,43 +349,42 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         setContentView(R.layout.activity_main);
 
 
-
         namesofsongs = getResources().getStringArray(R.array.names);
 
-        nameofsongsdin=namesofsongs;
-        listItems=new ArrayList<>(Arrays.asList(namesofsongs));
+        nameofsongsdin = namesofsongs;
+        listItems = new ArrayList<>(Arrays.asList(namesofsongs));
         texts = getResources().getStringArray(R.array.texts);
         types = getResources().getStringArray(R.array.typesofsongs);
         typesofsongs.clear();
-        for(int i = 0; i < namesofsongs.length; i++){
+        for (int i = 0; i < namesofsongs.length; i++) {
             typesofsongs.put(namesofsongs[i], types[i]);
         }
 
-        listt = (ListView)findViewById(R.id.namess);
+        listt = (ListView) findViewById(R.id.namess);
 
-        searchtext = (EditText)findViewById(R.id.editText);
+        searchtext = (EditText) findViewById(R.id.editText);
 
-        allsongs=(TextView)findViewById(R.id.allsongs);
-        xsongs=(TextView)findViewById(R.id.xsongs);
-        shortsongs=(TextView)findViewById(R.id.shortsongs);
-        longsongs=(TextView)findViewById(R.id.longsongs);
-        close=(ImageButton)findViewById(R.id.closebtn);
-        maintextbtn=(TextView)findViewById(R.id.maintextbtn);
-        playlisttextbtn=(TextView)findViewById(R.id.playlisttextbtn);
-        addsongbtn=(TextView)findViewById(R.id.addsong);
-        aboutustextbtn=(TextView)findViewById(R.id.aboutustextbtn);
-        optionstextbtn=(TextView)findViewById(R.id.optionstextbtn);
-        layout=(RelativeLayout)findViewById(R.id.relative);
-        progressBar=(ProgressBar)findViewById(R.id.progressBar3);
-        acceptbtn=(ImageButton)findViewById(R.id.acceptbtn);
-        howmanycheckedtxt=(TextView)findViewById(R.id.howmanychecked);
-        morebtnchecked=(ImageButton)findViewById(R.id.morebtnchecked);
-        randomsongbtn = (TextView)findViewById(R.id.randomsong);
-
+        allsongs = (TextView) findViewById(R.id.allsongs);
+        xsongs = (TextView) findViewById(R.id.xsongs);
+        shortsongs = (TextView) findViewById(R.id.shortsongs);
+        longsongs = (TextView) findViewById(R.id.longsongs);
+        close = (ImageButton) findViewById(R.id.closebtn);
+        maintextbtn = (TextView) findViewById(R.id.maintextbtn);
+        playlisttextbtn = (TextView) findViewById(R.id.playlisttextbtn);
+        addsongbtn = (TextView) findViewById(R.id.addsong);
+        aboutustextbtn = (TextView) findViewById(R.id.aboutustextbtn);
+        optionstextbtn = (TextView) findViewById(R.id.optionstextbtn);
+        layout = (RelativeLayout) findViewById(R.id.relative);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar3);
+        acceptbtn = (ImageButton) findViewById(R.id.acceptbtn);
+        howmanycheckedtxt = (TextView) findViewById(R.id.howmanychecked);
+        morebtnchecked = (ImageButton) findViewById(R.id.morebtnchecked);
+        randomsongbtn = (TextView) findViewById(R.id.randomsong);
+        helpbtn = (TextView) findViewById(R.id.helpbtn);
         mAdView = findViewById(R.id.adView);
 
         drawer = (DrawerLayout) findViewById(R.id.relative_layout);
-        menubtn = (ImageButton)findViewById(R.id.menubtn);
+        menubtn = (ImageButton) findViewById(R.id.menubtn);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
         Intent intent = getIntent();
@@ -394,24 +398,26 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         filtry.add("Короткие");
         filtry.add("Длинные");
 
-        if(intent.getStringExtra("playlistsong")!=null){
-            playlistsongs=intent.getStringExtra("playlistsong");
+        if (intent.getStringExtra("playlistsong") != null) {
+            playlistsongs = intent.getStringExtra("playlistsong");
             mymethod();
+
+            howmanycheckedtxt.setVisibility(View.VISIBLE);
             acceptbtn.setVisibility(ImageButton.VISIBLE);
             morebtnchecked.setVisibility(ImageButton.INVISIBLE);
             acceptbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(playlistsongs.equals("Избранное")){
+                    if (playlistsongs.equals("Избранное")) {
                         addtoizbr(adapter2.getCheckedpos());
 
                         onBackPressed();
-                    } else{
+                    } else {
                         ArrayList<String> allready = new ArrayList<>();
                         try {
                             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(playlistsongs))); // проверяем наличие песен в плейлисте
-                            String src="";
-                            while ((src = br.readLine()) != null){
+                            String src = "";
+                            while ((src = br.readLine()) != null) {
                                 allready.add(src);
                             }
                         } catch (FileNotFoundException e) {
@@ -424,11 +430,11 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                         try {
                             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(playlistsongs, MODE_APPEND)));
                             ArrayList<String> songs = adapter2.getCheckedpos();
-                            for(int i =0; i< songs.size(); i++){
-                                if(allready.contains(songs.get(i))==false){
-                                bw.write(songs.get(i));
-                                bw.newLine();
-                                } else{
+                            for (int i = 0; i < songs.size(); i++) {
+                                if (allready.contains(songs.get(i)) == false) {
+                                    bw.write(songs.get(i));
+                                    bw.newLine();
+                                } else {
                                     Toast.makeText(MainActivity.this, "Песня " + songs.get(i) + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -442,16 +448,19 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     }
                 }
             });
-        }
-        else
-            playlistsongs="sadfsadf";
+        } else if(intent.getStringExtra("audiochoose") != null){
+            mymethod();
+            morebtnchecked.setVisibility(View.INVISIBLE);
+            howmanycheckedtxt.setVisibility(View.INVISIBLE);
+            longclick=false;
+            menutopopen=false;
+            audiochoose=true;
+        } else
+            playlistsongs = "sadfsadf";
 
 
-         adapter2 = new MyAdapter(this,nameofsongsdin,  namesofsongs, "Main", longclick, new ArrayList<String>(), typesofsongs, false, "noplaylist");
+        adapter2 = new MyAdapter(this, nameofsongsdin, namesofsongs, "Main", longclick, new ArrayList<String>(), typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-
-
-
 
 
         searchtext.addTextChangedListener(new TextWatcher() {
@@ -465,12 +474,12 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 filter = charSequence.toString();
                 ArrayList<String> temp = new ArrayList<String>();
                 ArrayList<String> temp2 = adapter2.getCheckedpos();
-                for(int t = 0; t<nameofsongsdin.length; t++){
+                for (int t = 0; t < nameofsongsdin.length; t++) {
                     if (nameofsongsdin[t].toLowerCase().contains(charSequence.toString().toLowerCase()))
                         temp.add(nameofsongsdin[t]);
 
                 }
-                adapter2=new MyAdapter(MainActivity.this, temp.toArray(new String[0]),  namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist");
+                adapter2 = new MyAdapter(MainActivity.this, temp.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
                 listt.setAdapter(adapter2);
 
             }
@@ -502,7 +511,6 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onAdFailedToLoad(int errorCode) {
 
 
-
             }
 
             @Override
@@ -529,14 +537,12 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         });
 
 
-
         menubtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-
 
 
         maintextbtn.setOnClickListener(new View.OnClickListener() {
@@ -573,6 +579,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 startActivity(intent);
             }
         });
+        helpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HelpActivity.class);
+                startActivity(intent);
+            }
+        });
         optionstextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -589,7 +602,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (playlistsongs.equals("sadfsadf")==false)
+                if (playlistsongs.equals("sadfsadf") == false)
                     onBackPressed();
                 onBackPressed();
             }
@@ -607,12 +620,12 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onClick(View view) {
                 onBackPressed();
                 progressbar();
-                String b = namesofsongs[(int) (Math.random()*namesofsongs.length)];
+                String b = namesofsongs[(int) (Math.random() * namesofsongs.length)];
 
                 Intent intent = new Intent(MainActivity.this, textofsongwindoww.class);
                 intent.putExtra("имя", b);
                 intent.putExtra("isfromplaylist", "false");
-                if(b.equals("Хвала на вышынях Богу(G)"))
+                if (b.equals("Хвала на вышынях Богу(G)"))
                     intent.putExtra("extra", "Gloria");
                 else
                     intent.putExtra("extra", "none");
@@ -630,8 +643,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
-               // Log.d("MyLog", "Value is: " + value);
-                if(!value.equals("4")){
+                // Log.d("MyLog", "Value is: " + value);
+                if (!value.equals("5")) {
                     String title = "Новая версия доступна!";
                     String message = "Пожалуйста, обновите приложение";
                     String button1String = "Обновить";
@@ -642,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     builder.setMessage(message); // сообщение
                     builder.setPositiveButton(button1String, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                           Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.LibBib.spevn"));
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.LibBib.spevn"));
                             startActivity(intent);
                         }
                     });
@@ -667,38 +680,40 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
         //свайпы влево и вправо
         listt.setOnTouchListener(new View.OnTouchListener() {
-            float x1 = Float.NaN, y1 = Float.NaN, x2=Float.NaN, y2=Float.NaN;
-            static final int delta=40;
+            float x1 = Float.NaN, y1 = Float.NaN, x2 = Float.NaN, y2 = Float.NaN;
+            static final int delta = 40;
             //int ItemPosition;
             boolean first = false;
+
             @Override
             public boolean onTouch(View view, MotionEvent event) {
 
-                switch (event.getAction()){
+                switch (event.getAction()) {
                     case MotionEvent.EDGE_LEFT:
 
                         break;
 
                     case MotionEvent.ACTION_MOVE:
-                        if(!first){
-                        x1=event.getX();
-                        y1=event.getY();
-                        first=true;
-                        return false;}
+                        if (!first) {
+                            x1 = event.getX();
+                            y1 = event.getY();
+                            first = true;
+                            return false;
+                        }
 
 
                     case MotionEvent.ACTION_UP:
-                        first=false;
-                        x2=event.getX();
-                        y2=event.getY();
-                        int itemPosition=listt.pointToPosition((int) x2, (int) y2);
+                        first = false;
+                        x2 = event.getX();
+                        y2 = event.getY();
+                        int itemPosition = listt.pointToPosition((int) x2, (int) y2);
 
-                        if (x2-x1>delta){
+                        if (x2 - x1 > delta) {
                             filtr--;
-                            if(filtr==-1)
-                                filtr=0;
-                            else{
-                                switch (filtr){
+                            if (filtr == -1)
+                                filtr = 0;
+                            else {
+                                switch (filtr) {
                                     case 0:
                                         allsongs(new View(MainActivity.this));
                                         break;
@@ -715,14 +730,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                                 }
                             }
 
-                        }
-                        else if (x1-x2>delta){
+                        } else if (x1 - x2 > delta) {
 
                             filtr++;
-                            if(filtr==4)
-                                filtr=3;
-                            else{
-                                switch (filtr){
+                            if (filtr == 4)
+                                filtr = 3;
+                            else {
+                                switch (filtr) {
                                     case 0:
                                         allsongs(new View(MainActivity.this));
                                         break;
@@ -750,91 +764,98 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
     }
 
-    public void allsongs(View view){
-        filtr=0;
+    public void allsongs(View view) {
+        filtr = 0;
         allsongs.setTextColor(Color.parseColor("#000000"));
         xsongs.setTextColor(Color.parseColor("#33000000"));
         longsongs.setTextColor(Color.parseColor("#33000000"));
         shortsongs.setTextColor(Color.parseColor("#33000000"));
-        nameofsongsdin=namesofsongs;
+        nameofsongsdin = namesofsongs;
         ArrayList<String> temp = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
-        for(int t = 0; t<nameofsongsdin.length; t++){
+        for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp.add(nameofsongsdin[t]);
 
         }
-        adapter2=new MyAdapter(MainActivity.this, temp.toArray(new String[0]),  namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist");
+        adapter2 = new MyAdapter(MainActivity.this, temp.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
     }
-    public void xsongs(View view){
-        filtr=1;
-        nameofsongsdin=new String[]{};
-        ArrayList<String> temp= new ArrayList<>();
-        for(int i =0; i<namesofsongs.length; i++){
-            if(typesofsongs.get(namesofsongs[i]).toLowerCase().contains("части имши"))
+
+    public void xsongs(View view) {
+        filtr = 1;
+        nameofsongsdin = new String[]{};
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = 0; i < namesofsongs.length; i++) {
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("части имши"))
                 temp.add(namesofsongs[i]);
         }
-        nameofsongsdin=temp.toArray(new String[0]);
+        nameofsongsdin = temp.toArray(new String[0]);
         ArrayList<String> temp3 = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
-        for(int t = 0; t<nameofsongsdin.length; t++){
+        for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
 
         }
-        adapter2=new MyAdapter(MainActivity.this, temp3.toArray(new String[0]),  namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist");
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
         listt.setAdapter(adapter2);
 
         xsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         longsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));}
-    public void shortsongs(View view){
-        filtr=2;
-        nameofsongsdin=new String[]{};
-        ArrayList<String> temp= new ArrayList<>();
-        for(int i =0; i<namesofsongs.length; i++){
-            if(typesofsongs.get(namesofsongs[i]).toLowerCase().contains("короткие"))
+        shortsongs.setTextColor(Color.parseColor("#33000000"));
+    }
+
+    public void shortsongs(View view) {
+        filtr = 2;
+        nameofsongsdin = new String[]{};
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = 0; i < namesofsongs.length; i++) {
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("короткие"))
                 temp.add(namesofsongs[i]);
         }
-        nameofsongsdin=temp.toArray(new String[0]);
+        nameofsongsdin = temp.toArray(new String[0]);
         ArrayList<String> temp3 = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
-        for(int t = 0; t<nameofsongsdin.length; t++){
+        for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
 
         }
-        adapter2=new MyAdapter(MainActivity.this, temp3.toArray(new String[0]),  namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist");
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
         listt.setAdapter(adapter2);
 
         shortsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         longsongs.setTextColor(Color.parseColor("#33000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));}
-    public void longsongs(View view){
-        filtr=3;
-        nameofsongsdin=new String[]{};
-        ArrayList<String> temp= new ArrayList<>();
-        for(int i =0; i<namesofsongs.length; i++){
-            if(typesofsongs.get(namesofsongs[i]).toLowerCase().contains("длинные"))
+        xsongs.setTextColor(Color.parseColor("#33000000"));
+    }
+
+    public void longsongs(View view) {
+        filtr = 3;
+        nameofsongsdin = new String[]{};
+        ArrayList<String> temp = new ArrayList<>();
+        for (int i = 0; i < namesofsongs.length; i++) {
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("длинные"))
                 temp.add(namesofsongs[i]);
         }
-        nameofsongsdin=temp.toArray(new String[0]);
+        nameofsongsdin = temp.toArray(new String[0]);
         ArrayList<String> temp3 = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
-        for(int t = 0; t<nameofsongsdin.length; t++){
+        for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
 
         }
-        adapter2=new MyAdapter(MainActivity.this, temp3.toArray(new String[0]),  namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist");
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
         listt.setAdapter(adapter2);
         longsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         xsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));}
+        shortsongs.setTextColor(Color.parseColor("#33000000"));
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -865,23 +886,22 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(menutopopen){
+            if (menutopopen) {
                 mymethoddestroy();
                 adapter2.changeid(R.layout.fon);
                 updatetextchecked(0);
-                if(playlistsongs.equals("sadfsadf") == false){
-                    playlistsongs="sadfsadf";
+                if (playlistsongs.equals("sadfsadf") == false) {
+                    playlistsongs = "sadfsadf";
                     onBackPressed();
-                } else{
-                  
+                } else {
+
 
                 }
-            } else{
-            super.onBackPressed();
+            } else {
+                super.onBackPressed();
             }
         }
     }
-
 
 
 }
