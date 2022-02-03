@@ -140,7 +140,7 @@
         android:layout_marginBottom="40dp"
         android:background="#FFD645"
         android:fontFamily="@font/myfont"
-        android:text="Угостить разработчика кофе"
+        android:text="Помочь проекту"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="18dp"

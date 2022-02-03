@@ -264,19 +264,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF">
+
             <TextView
                 android:id="@+id/helpbtn"
-                android:layout_width="194dp"
+                android:layout_width="143dp"
                 android:layout_height="34dp"
-
                 android:layout_alignBottom="@id/addsong"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-58.5dp"
+                android:background="@drawable/helpbtnstyle"
                 android:fontFamily="@font/myfont"
-                android:gravity="center_vertical"
+                android:gravity="center"
+                android:paddingRight="6dp"
                 android:text="Помочь проекту"
-                android:textColor="#000000" />
+                android:textColor="#000000">
+
+            </TextView>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:layout_alignRight="@id/helpbtn"
+                android:layout_alignBottom="@id/helpbtn"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="9dp"
+                ads:srcCompat="@drawable/like3" />
+
             <TextView
                 android:id="@+id/addsong"
                 android:layout_width="194dp"

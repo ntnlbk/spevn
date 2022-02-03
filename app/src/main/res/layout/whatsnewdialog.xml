@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/whatsnewbackgorund"
+    android:orientation="vertical"
+    android:paddingBottom="21dp">
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/myfont"
+        android:text="Обновление!"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_width="200dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/myfont"
+        android:text="Добавлена функция прослушивания некоторых песен. Записи будут постепенно добавляться."
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_marginRight="26dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/myfont"
+        android:text='Если у вас есть предложения песен (или записей к уже добавленным песням), которых еще нет в приложении, теперь вы можете отправить их нам, заполнив специальную форму. (см. "Помощь проекту"). Мы добавим их в библиотеку в ближайшем обновлении.'
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_marginRight="26dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/myfont"
+        android:text='Добавлены новые песни, исправлены опечатки.'
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginRight="26dp"
+        android:fontFamily="@font/myfont"
+        android:text='Добавлена возможность поддержать проект материально (см. "Помощь проекту").'
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginRight="26dp"
+        android:fontFamily="@font/myfont"
+
+
+        android:gravity="center_horizontal|end"
+        android:text='ОК'
+        android:textColor="#FFC700"
+        android:textSize="18dp"
+        android:textStyle="normal" />
+
+
+</LinearLayout>

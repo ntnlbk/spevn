@@ -3,16 +3,16 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     buildToolsVersion "29.0.2"
     defaultConfig {
 
         applicationId "com.LibBib.spevn"
         minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 10
-        versionName "10"
+        targetSdkVersion 30
+        versionCode 13
+        versionName "13"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,6 +48,9 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:27.1.1'
     //noinspection GradleCompatible
+    def billing_version = "4.0.0"
+
+    implementation "com.android.billingclient:billing:$billing_version"
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:multidex:1.0.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

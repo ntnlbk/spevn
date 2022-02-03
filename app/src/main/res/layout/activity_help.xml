@@ -138,7 +138,6 @@
             android:layout_height="172dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="65dp"
             android:background="@drawable/helpbtnstyle"
             android:orientation="vertical">
 
@@ -165,13 +164,56 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/textView31"
                 android:layout_width="235dp"
                 android:layout_height="42dp"
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Помогите сделать так, чтобы все песни можно было послушать"
+                android:textColor="#000000"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/reclama2"
+            android:layout_width="323dp"
+            android:layout_height="172dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="65dp"
+            android:background="@drawable/helpbtnstyle"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/rasda"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="26dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/reclamaimg" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="11dp"
+                android:fontFamily="@font/myfont"
+                android:text="Посмотреть рекламу"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="235dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="11dp"
+                android:fontFamily="@font/myfont"
+                android:text="Посмотрите короткую рекламу, чтобы помочь проекту"
                 android:textColor="#000000"
                 android:textSize="12dp" />
 

@@ -217,7 +217,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Filterable {
             addtoplalist.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (checkedpos.size() == 0) {
+                    if (checkedpos.size() == 0&&resource.length!=0) {
                         nameschecked.add(resource[positiononlyfromplaylist]);
 
                         ((MyIntefrace) context).addtoplalist(nameschecked);

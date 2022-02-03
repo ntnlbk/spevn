@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
@@ -25,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -80,6 +82,7 @@ private Boolean audiochoose = false;
     private Dialog maindialog;
     private Map<String, String> typesofsongs = new HashMap<>();
     private int filtr = 0;
+    private SharedPreferences prefs;
 
 
     @Override
@@ -761,6 +764,25 @@ private Boolean audiochoose = false;
             }
 
         });
+
+        prefs = getSharedPreferences("com.LibBib.spevn", MODE_PRIVATE);
+         if(prefs.getBoolean("firstrun", true)){
+             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+             View view = (LinearLayout)getLayoutInflater().inflate(R.layout.whatsnewdialog, null);
+             builder.setView(view);
+            TextView close = view.findViewById(R.id.textView37);
+             Dialog dialog = builder.create();
+             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+             dialog.show();
+            close.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+             prefs.edit().putBoolean("firstrun", false).apply();
+         }
 
     }
 
