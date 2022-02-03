@@ -179,7 +179,7 @@ public class HelpActivity extends AppCompatActivity {
                 // Try to restart the connection on the next request to
                 // Google Play by calling the startConnection() method.
 
-                Toast.makeText(HelpActivity.this, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HelpActivity.this, "Повторите попытку", Toast.LENGTH_SHORT).show();
 
             }
 
