@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private ListView listt;
     private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn, aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn, helpbtn;
     private EditText searchtext;
-private Boolean audiochoose = false;
+    private Boolean audiochoose = false;
     private Boolean longclick = false;
     private AdView mAdView;
     private ImageButton menubtn, acceptbtn;
@@ -310,12 +310,9 @@ private Boolean audiochoose = false;
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-
         } catch (IOException e) {
             e.printStackTrace();
-
         }
-
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(nameofplaylist, MODE_APPEND)));
             for (int i = 0; i < namesofsongstoadd.length; i++) {
@@ -332,28 +329,23 @@ private Boolean audiochoose = false;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        onBackPressed();
+        if (menutopopen) {
+            onBackPressed();
+        }
     }
-
     @Override
     public void audiochoose(String name) {
         Intent intent = new Intent();
-        intent.putExtra("name",name);
+        intent.putExtra("name", name);
         setResult(RESULT_OK, intent);
         finish();
     }
-
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         namesofsongs = getResources().getStringArray(R.array.names);
-
         nameofsongsdin = namesofsongs;
         listItems = new ArrayList<>(Arrays.asList(namesofsongs));
         texts = getResources().getStringArray(R.array.texts);
@@ -362,11 +354,8 @@ private Boolean audiochoose = false;
         for (int i = 0; i < namesofsongs.length; i++) {
             typesofsongs.put(namesofsongs[i], types[i]);
         }
-
         listt = (ListView) findViewById(R.id.namess);
-
         searchtext = (EditText) findViewById(R.id.editText);
-
         allsongs = (TextView) findViewById(R.id.allsongs);
         xsongs = (TextView) findViewById(R.id.xsongs);
         shortsongs = (TextView) findViewById(R.id.shortsongs);
@@ -385,26 +374,21 @@ private Boolean audiochoose = false;
         randomsongbtn = (TextView) findViewById(R.id.randomsong);
         helpbtn = (TextView) findViewById(R.id.helpbtn);
         mAdView = findViewById(R.id.adView);
-
         drawer = (DrawerLayout) findViewById(R.id.relative_layout);
         menubtn = (ImageButton) findViewById(R.id.menubtn);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         progressBar.setVisibility(ProgressBar.INVISIBLE);
         Intent intent = getIntent();
-
         close.setVisibility(View.INVISIBLE);
         morebtnchecked.setVisibility(View.INVISIBLE);
         acceptbtn.setVisibility(View.INVISIBLE);
-
         filtry.add("Все");
         filtry.add("Части имши");
         filtry.add("Короткие");
         filtry.add("Длинные");
-
         if (intent.getStringExtra("playlistsong") != null) {
             playlistsongs = intent.getStringExtra("playlistsong");
             mymethod();
-
             howmanycheckedtxt.setVisibility(View.VISIBLE);
             acceptbtn.setVisibility(ImageButton.VISIBLE);
             morebtnchecked.setVisibility(ImageButton.INVISIBLE);
@@ -413,7 +397,6 @@ private Boolean audiochoose = false;
                 public void onClick(View view) {
                     if (playlistsongs.equals("Избранное")) {
                         addtoizbr(adapter2.getCheckedpos());
-
                         onBackPressed();
                     } else {
                         ArrayList<String> allready = new ArrayList<>();
@@ -428,7 +411,6 @@ private Boolean audiochoose = false;
 
                         } catch (IOException e) {
                             e.printStackTrace();
-
                         }
                         try {
                             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(playlistsongs, MODE_APPEND)));
@@ -451,27 +433,21 @@ private Boolean audiochoose = false;
                     }
                 }
             });
-        } else if(intent.getStringExtra("audiochoose") != null){
+        } else if (intent.getStringExtra("audiochoose") != null) {
             mymethod();
             morebtnchecked.setVisibility(View.INVISIBLE);
             howmanycheckedtxt.setVisibility(View.INVISIBLE);
-            longclick=false;
-            menutopopen=false;
-            audiochoose=true;
+            longclick = false;
+            menutopopen = false;
+            audiochoose = true;
         } else
             playlistsongs = "sadfsadf";
-
-
         adapter2 = new MyAdapter(this, nameofsongsdin, namesofsongs, "Main", longclick, new ArrayList<String>(), typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-
-
         searchtext.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 filter = charSequence.toString();
@@ -480,16 +456,12 @@ private Boolean audiochoose = false;
                 for (int t = 0; t < nameofsongsdin.length; t++) {
                     if (nameofsongsdin[t].toLowerCase().contains(charSequence.toString().toLowerCase()))
                         temp.add(nameofsongsdin[t]);
-
                 }
                 adapter2 = new MyAdapter(MainActivity.this, temp.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
                 listt.setAdapter(adapter2);
-
             }
-
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -501,53 +473,39 @@ private Boolean audiochoose = false;
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("6318028ABE795F15CFBC0D366196F8A9")
                 .build();
-
         mAdView.loadAd(adRequest);
-
         mAdView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-
             }
-
             @Override
             public void onAdFailedToLoad(int errorCode) {
-
-
             }
-
             @Override
             public void onAdOpened() {
                 // Code to be executed when an ad opens an overlay that
                 // covers the screen.
             }
-
             @Override
             public void onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
             }
-
             @Override
             public void onAdLeftApplication() {
                 // Code to be executed when the user has left the app.
             }
-
             @Override
             public void onAdClosed() {
                 // Code to be executed when the user is about to return
                 // to the app after tapping on an ad.
             }
         });
-
-
         menubtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-
-
         maintextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -558,21 +516,16 @@ private Boolean audiochoose = false;
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PlaylistActivity.class);
-
                 startActivity(intent);
-
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
-
         aboutustextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawer.closeDrawer(GravityCompat.START);
-
                 Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
                 startActivity(intent);
-
             }
         });
         addsongbtn.setOnClickListener(new View.OnClickListener() {
@@ -601,7 +554,6 @@ private Boolean audiochoose = false;
 
             }
         });
-
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -610,14 +562,12 @@ private Boolean audiochoose = false;
                 onBackPressed();
             }
         });
-
         morebtnchecked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 adapter2.dialog(0);
             }
         });
-
         randomsongbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -632,11 +582,9 @@ private Boolean audiochoose = false;
                     intent.putExtra("extra", "Gloria");
                 else
                     intent.putExtra("extra", "none");
-
                 startActivity(intent);
             }
         });
-
         //проверяем наличие обновы
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("update");
@@ -647,12 +595,11 @@ private Boolean audiochoose = false;
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
                 // Log.d("MyLog", "Value is: " + value);
-                if (!value.equals("5")) {
+                if (!value.equals("6")) {
                     String title = "Новая версия доступна!";
                     String message = "Пожалуйста, обновите приложение";
                     String button1String = "Обновить";
                     String button2String = "Пропустить обновление";
-
                     final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle(title);  // заголовок
                     builder.setMessage(message); // сообщение
@@ -672,30 +619,23 @@ private Boolean audiochoose = false;
                     builder.show();
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
                 //Log.w("MyLog", "Failed to read value.", error.toException());
             }
         });
-
-
         //свайпы влево и вправо
         listt.setOnTouchListener(new View.OnTouchListener() {
             float x1 = Float.NaN, y1 = Float.NaN, x2 = Float.NaN, y2 = Float.NaN;
             static final int delta = 40;
             //int ItemPosition;
             boolean first = false;
-
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-
                 switch (event.getAction()) {
                     case MotionEvent.EDGE_LEFT:
-
                         break;
-
                     case MotionEvent.ACTION_MOVE:
                         if (!first) {
                             x1 = event.getX();
@@ -703,8 +643,6 @@ private Boolean audiochoose = false;
                             first = true;
                             return false;
                         }
-
-
                     case MotionEvent.ACTION_UP:
                         first = false;
                         x2 = event.getX();
@@ -729,12 +667,9 @@ private Boolean audiochoose = false;
                                     case 3:
                                         longsongs(new View(MainActivity.this));
                                         break;
-
                                 }
                             }
-
                         } else if (x1 - x2 > delta) {
-
                             filtr++;
                             if (filtr == 4)
                                 filtr = 3;
@@ -752,40 +687,33 @@ private Boolean audiochoose = false;
                                     case 3:
                                         longsongs(new View(MainActivity.this));
                                         break;
-
                                 }
                             }
                         }
-
                     default:
                         return false;
                 }
                 return false;
             }
-
         });
-
         prefs = getSharedPreferences("com.LibBib.spevn", MODE_PRIVATE);
-         if(prefs.getBoolean("firstrun", true)){
-             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-             View view = (LinearLayout)getLayoutInflater().inflate(R.layout.whatsnewdialog, null);
-             builder.setView(view);
+        if (prefs.getBoolean("firstrun", true)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            View view = (LinearLayout) getLayoutInflater().inflate(R.layout.whatsnewdialog, null);
+            builder.setView(view);
             TextView close = view.findViewById(R.id.textView37);
-             Dialog dialog = builder.create();
-             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-             dialog.show();
+            Dialog dialog = builder.create();
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            dialog.show();
             close.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     dialog.dismiss();
                 }
             });
-
-             prefs.edit().putBoolean("firstrun", false).apply();
-         }
-
+            prefs.edit().putBoolean("firstrun", false).apply();
+        }
     }
-
     public void allsongs(View view) {
         filtr = 0;
         allsongs.setTextColor(Color.parseColor("#000000"));
@@ -798,12 +726,10 @@ private Boolean audiochoose = false;
         for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp.add(nameofsongsdin[t]);
-
         }
         adapter2 = new MyAdapter(MainActivity.this, temp.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
     }
-
     public void xsongs(View view) {
         filtr = 1;
         nameofsongsdin = new String[]{};
@@ -818,17 +744,14 @@ private Boolean audiochoose = false;
         for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
-
         }
-        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-
         xsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         longsongs.setTextColor(Color.parseColor("#33000000"));
         shortsongs.setTextColor(Color.parseColor("#33000000"));
     }
-
     public void shortsongs(View view) {
         filtr = 2;
         nameofsongsdin = new String[]{};
@@ -843,17 +766,14 @@ private Boolean audiochoose = false;
         for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
-
         }
-        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-
         shortsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         longsongs.setTextColor(Color.parseColor("#33000000"));
         xsongs.setTextColor(Color.parseColor("#33000000"));
     }
-
     public void longsongs(View view) {
         filtr = 3;
         nameofsongsdin = new String[]{};
@@ -868,43 +788,32 @@ private Boolean audiochoose = false;
         for (int t = 0; t < nameofsongsdin.length; t++) {
             if (nameofsongsdin[t].toLowerCase().contains(filter.toString().toLowerCase()))
                 temp3.add(nameofsongsdin[t]);
-
         }
-        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist",audiochoose);
+        adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
         longsongs.setTextColor(Color.parseColor("#000000"));
         allsongs.setTextColor(Color.parseColor("#33000000"));
         xsongs.setTextColor(Color.parseColor("#33000000"));
         shortsongs.setTextColor(Color.parseColor("#33000000"));
     }
-
     @Override
     protected void onResume() {
         super.onResume();
-
         mAdView.resume();
         progressBar.setVisibility(ProgressBar.INVISIBLE);
     }
-
     @Override
     protected void onPause() {
         mAdView.pause();
-
-
         super.onPause();
     }
-
     @Override
     protected void onDestroy() {
         mAdView.destroy();
-
         super.onDestroy();
     }
-
     @Override
     public void onBackPressed() {
-
-
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -916,14 +825,10 @@ private Boolean audiochoose = false;
                     playlistsongs = "sadfsadf";
                     onBackPressed();
                 } else {
-
-
                 }
             } else {
                 super.onBackPressed();
             }
         }
     }
-
-
 }
