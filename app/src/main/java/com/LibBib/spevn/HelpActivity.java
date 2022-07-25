@@ -172,7 +172,7 @@ public class HelpActivity extends AppCompatActivity {
         donatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (billingClient != null && hasConnection(HelpActivity.this)) {
+                if (billingClient != null && hasConnection(HelpActivity.this) && billingFlowParams!=null) {
                     int responseCode = billingClient.launchBillingFlow(HelpActivity.this, billingFlowParams).getResponseCode();
                 } else if (!hasConnection(HelpActivity.this)) {
                     Toast.makeText(HelpActivity.this, "Проверьте подключение к интернету и повторите попытку", Toast.LENGTH_SHORT).show();
