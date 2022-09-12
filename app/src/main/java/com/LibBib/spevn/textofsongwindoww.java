@@ -289,7 +289,11 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 TextView alltime = (TextView) promptsView.findViewById(R.id.alltime);
                 TextView curtime = (TextView) promptsView.findViewById(R.id.momenttime);
                 TextView nameofsong = (TextView) promptsView.findViewById(R.id.nameofsong);
-                nameofsong.setText(name);
+                if (name.equals("У Табе жыву") || name.equals("Кожны, хто чуе") || name.equals("Пан уваскрос, Езус жыве")) {
+                    nameofsong.setText("За спеў падзяка каналу t.me/spevy");
+                } else {
+                    nameofsong.setText(name);
+                }
                 final Dialog dialog = builder.create();
                 closedialog.setOnClickListener(new View.OnClickListener() {
                     @Override
