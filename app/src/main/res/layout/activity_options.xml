@@ -6,6 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".OptionsActivity">
 
+    <ImageButton
+        android:id="@+id/plustextsize"
+        android:layout_width="61dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/imageView6"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="21dp"
+        android:paddingTop="20dp"
+        android:paddingRight="19dp"
+        android:paddingBottom="20dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/pluston" />
+
+    <ImageButton
+        android:id="@+id/minustextsize"
+        android:layout_width="53dp"
+        android:layout_height="59dp"
+        android:layout_alignBottom="@id/imageView6"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
+        android:background="#00FFFFFF"
+        android:paddingLeft="13dp"
+        android:paddingTop="28dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="29dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/minuston" />
+
+    <TextView
+        android:id="@+id/textsize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView6"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="7"
+        android:textColor="#99000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textView38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/imageView6"
+        android:layout_marginStart="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginBottom="19dp"
+        android:fontFamily="@font/myfont"
+        android:text="Размер шрифта"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@id/imageView13"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="27.25dp"
+        android:layout_marginLeft="27.25dp"
+        android:layout_marginEnd="27.25dp"
+        android:layout_marginRight="27.25dp"
+        android:layout_marginBottom="-75dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/rec" />
+
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="20dp"

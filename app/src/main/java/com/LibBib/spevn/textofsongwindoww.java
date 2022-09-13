@@ -41,7 +41,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 public class textofsongwindoww extends AppCompatActivity implements AdapterForRec.ItemClickListener {
-    private InterstitialAd mInterstitial;
     private String gloriabegin = "G D C D <br/>";
     FileDownloadTask task;
     private boolean istask = false;
@@ -63,6 +62,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     private SeekBar seek;
     private RecyclerView songs;
     private int tonalnost = 0; //тональность
+    private int textsizechange = 0; //изменение шрифта
     private String color = ""; // цвет аккордов (код цвета)
     ArrayList<String> majorchords = new ArrayList<String>(); //список мажорных аккордов
     ArrayList<String> minorchords = new ArrayList<String>(); //список минорных аккордов
@@ -191,6 +191,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     case 2:
                         tonalnost = Integer.parseInt(src); // третья - тональность
                         break;
+                    case 3:
+                        textsizechange = Integer.parseInt(src);
+                        break;
                 }
                 i++;
             }
@@ -199,14 +202,21 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
             checkshowchods = "1";
             color = "fa0000";
             tonalnost = 0;
+            textsizechange = 0;
             e.printStackTrace();
         } catch (IOException e) {
             checkshowchods = "1";
             color = "fa0000";
             tonalnost = 0;
+            textsizechange = 0;
             e.printStackTrace();
         }
         showchords = Integer.parseInt(checkshowchods);
+
+        if (textsizechange <= -6)
+            textsizechange=-6;
+        text.setTextSize(20f + textsizechange*1.5f);
+
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {

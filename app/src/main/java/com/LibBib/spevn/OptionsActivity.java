@@ -36,17 +36,17 @@ public class OptionsActivity extends AppCompatActivity {
 
     public String name;
 
-    private ImageButton  pluston, minuston;
+    private ImageButton  pluston, minuston, plustextsize, minustextsize;
     private ImageButton backbtn;
     private Button acceptbtn;
     private String extra="";
-    private TextView tontext;
+    private TextView tontext, textsizetext;
     private ImageView showchordsim, changecolorim;
     private String isfromplaylist;
     private CheckBox chords;
     public int showchords , oldshowchords;
     public  String color, oldcolor, nameofplaylist;
-    public int ton, oldton;
+    public int ton, oldton, textsize, oldtextsize;
 
 
 
@@ -55,13 +55,15 @@ public class OptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
+        textsizetext =(TextView)findViewById(R.id.textsize);
 
         acceptbtn=(Button)findViewById(R.id.accept);
         chords=(CheckBox)findViewById(R.id.chords);
         backbtn=(ImageButton)findViewById(R.id.backbtn2);
         showchordsim=(ImageView)findViewById(R.id.imageView11);
 
-
+        plustextsize=(ImageButton)findViewById(R.id.plustextsize);
+        minustextsize=(ImageButton)findViewById(R.id.minustextsize);
         pluston=(ImageButton)findViewById(R.id.pluston);
         minuston=(ImageButton)findViewById(R.id.minuston);
         tontext=(TextView)findViewById(R.id.tontext);
@@ -84,6 +86,7 @@ public class OptionsActivity extends AppCompatActivity {
             showchords=1;
             color="fa0000";
             ton=0;
+            textsize=0;
             while ((src = br.readLine()) != null){
                 switch (i) {
                     case 0:
@@ -98,6 +101,10 @@ public class OptionsActivity extends AppCompatActivity {
                         ton=Integer.parseInt(src);
                         oldton=Integer.parseInt(src);
                         break;
+                    case 3:
+                        textsize=Integer.parseInt(src);
+                        oldtextsize=Integer.parseInt(src);
+                        break;
                 }
                 i++;
             }
@@ -110,6 +117,8 @@ public class OptionsActivity extends AppCompatActivity {
             oldshowchords=1;
             oldcolor="fa0000";
             oldton=0;
+            textsize=0;
+            oldtextsize=0;
             e.printStackTrace();
         } catch (IOException e) {
             showchords=1;
@@ -118,6 +127,8 @@ public class OptionsActivity extends AppCompatActivity {
             oldshowchords=1;
             oldcolor="fa0000";
             oldton=0;
+            textsize=0;
+            oldtextsize=0;
             e.printStackTrace();
         }
 
@@ -130,7 +141,7 @@ public class OptionsActivity extends AppCompatActivity {
 
 
         tontext.setText(String.valueOf(ton));
-
+        textsizetext.setText(String.valueOf(textsize));
 
         acceptbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +155,8 @@ public class OptionsActivity extends AppCompatActivity {
                     bw.write(color);
                     bw.newLine();
                     bw.write(String.valueOf(ton));
+                    bw.newLine();
+                    bw.write(String.valueOf(textsize));
                     bw.close();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -153,6 +166,7 @@ public class OptionsActivity extends AppCompatActivity {
                 oldcolor=color;
                 oldshowchords=showchords;
                 oldton=ton;
+                oldtextsize=textsize;
              onBackPressed();
             }
         });
@@ -182,7 +196,24 @@ public class OptionsActivity extends AppCompatActivity {
                 tontext.setText(String.valueOf(ton));}
             }
         });
-
+        minustextsize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textsize>=-5){
+                textsize--;
+                textsizetext.setText(String.valueOf(textsize));
+                }
+            }
+        });
+        plustextsize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textsize<=9){
+                textsize++;
+                textsizetext.setText(String.valueOf(textsize));
+                }
+            }
+        });
         chords.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -243,7 +274,7 @@ public class OptionsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
 
-        if(oldcolor.equals(color) && oldshowchords==showchords && oldton==ton) {
+        if(oldcolor.equals(color) && oldshowchords==showchords && oldton==ton && oldtextsize==textsize) {
 
             if (name.equals("none")) {
                 Intent intent = new Intent(OptionsActivity.this, MainActivity.class);
