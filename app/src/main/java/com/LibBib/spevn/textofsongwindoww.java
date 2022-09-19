@@ -299,7 +299,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 TextView alltime = (TextView) promptsView.findViewById(R.id.alltime);
                 TextView curtime = (TextView) promptsView.findViewById(R.id.momenttime);
                 TextView nameofsong = (TextView) promptsView.findViewById(R.id.nameofsong);
-                if (name.equals("У Табе жыву") || name.equals("Кожны, хто чуе") || name.equals("Пан уваскрос, Езус жыве")) {
+                if (name.equals("У Табе жыву") || name.equals("Кожны, хто чуе") || name.equals("Пан уваскрос, Езус жыве")
+                || name.equals("Вывышаю Цябе") || name.equals("Віа Далароса") || name.equals("Жыццё Табе аддаю")) {
                     nameofsong.setText("За спеў падзяка каналу t.me/spevy");
                 } else {
                     nameofsong.setText(name);

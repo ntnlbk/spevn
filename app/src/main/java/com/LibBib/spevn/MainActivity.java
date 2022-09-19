@@ -2,6 +2,7 @@ package com.LibBib.spevn;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -17,7 +18,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -61,7 +61,9 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
-    private int a;
+
+    private int C2 ;
+    private  int C4;
     private String[] namesofsongs, texts, temp2, types, nameofsongsdin;
     private ListView listt;
     private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn, aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn, helpbtn;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private Map<String, String> typesofsongs = new HashMap<>();
     private int filtr = 0;
     private SharedPreferences prefs;
+
 
 
     @Override
@@ -345,6 +348,9 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+         C2 = getResources().getColor(R.color.C2);
+         C4 = getResources().getColor(R.color.C4);
         namesofsongs = getResources().getStringArray(R.array.names);
         nameofsongsdin = namesofsongs;
         listItems = new ArrayList<>(Arrays.asList(namesofsongs));
@@ -716,10 +722,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     }
     public void allsongs(View view) {
         filtr = 0;
-        allsongs.setTextColor(Color.parseColor("#000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        allsongs.setTextColor(C2);
+        xsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
         nameofsongsdin = namesofsongs;
         ArrayList<String> temp = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
@@ -747,10 +753,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        xsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        xsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
     }
     public void shortsongs(View view) {
         filtr = 2;
@@ -769,10 +775,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        shortsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
+        shortsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        xsongs.setTextColor(C4);
     }
     public void longsongs(View view) {
         filtr = 3;
@@ -791,10 +797,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        longsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        longsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        xsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
     }
     @Override
     protected void onResume() {
