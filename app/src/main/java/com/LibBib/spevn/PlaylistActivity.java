@@ -4,6 +4,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -149,6 +151,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
         final Button okbtn = (Button)promptsView.findViewById(R.id.savebtn);
         final Button closebtn = (Button)promptsView.findViewById(R.id.closebtndialog);
         final AlertDialog alertDialog = mDialogBuilder.create();
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         okbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,7 +244,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
         } else {
             LayoutInflater li = LayoutInflater.from(PlaylistActivity.this);
             View promptsView = li.inflate(R.layout.dialog, null);
-            AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(PlaylistActivity.this);
+            AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(PlaylistActivity.this, R.style.DialogStyle);
             mDialogBuilder.setView(promptsView);
             final EditText userInput = (EditText) promptsView.findViewById(R.id.input_text);
             userInput.setHint("Введите новое название");
@@ -250,6 +253,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
             final Button okbtn = (Button) promptsView.findViewById(R.id.savebtn);
             final Button closebtn = (Button) promptsView.findViewById(R.id.closebtndialog);
             final AlertDialog alertDialog = mDialogBuilder.create();
+            //alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             okbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

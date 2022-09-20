@@ -17,7 +17,7 @@
         android:id="@+id/lin"
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:background="#FFD645">
+        android:background="@color/C5">
 
         <ImageButton
             android:id="@+id/acceptbtn"
@@ -71,7 +71,7 @@
             android:fontFamily="@font/myfont"
             android:gravity="center"
             android:text="0 выбрано"
-            android:textColor="@color/C1"
+            android:textColor="#ffffff"
             android:textSize="18dp" />
     </RelativeLayout>
 
@@ -275,7 +275,7 @@
                 android:gravity="center"
                 android:paddingRight="6dp"
                 android:text="Помочь проекту"
-                android:textColor="@color/C2">
+                android:textColor="#000000">
 
             </TextView>
 

@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -231,8 +232,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             playlists.requestLayout();
         }
         String[] temp = namesofplaylists.toArray(new String[0]);
-        final Dialog dialog = builder.create();
-        maindialog = dialog;
+        final Dialog CustomDialog = builder.create();
+        maindialog = CustomDialog;
         AdapterForPlaylist adapter = new AdapterForPlaylist(this, temp, temp, chislo, true, temp2);
         playlists.setAdapter(adapter);
 
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
+                CustomDialog.dismiss();
             }
         });
         addnewplaylist.setOnClickListener(new View.OnClickListener() {
@@ -298,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         });
 
 
-        dialog.show();
+        CustomDialog.show();
     }
 
     @Override
@@ -348,7 +349,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
          C2 = getResources().getColor(R.color.C2);
          C4 = getResources().getColor(R.color.C4);
         namesofsongs = getResources().getStringArray(R.array.names);

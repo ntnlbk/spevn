@@ -21,7 +21,7 @@
             android:fontFamily="@font/myfont"
             android:text="Добавить в плейлист"
             android:textAllCaps="false"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="18sp" />
 
         <ImageView
@@ -44,7 +44,7 @@
             android:fontFamily="@font/myfont"
             android:text="Добавить в избранное"
             android:textAllCaps="false"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="18sp" />
     </LinearLayout>
 </RelativeLayout>
