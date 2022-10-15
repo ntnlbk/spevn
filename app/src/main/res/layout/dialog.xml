@@ -35,6 +35,7 @@
         android:layout_marginRight="25dp"
         android:backgroundTint="@color/C6"
         android:fontFamily="@font/myfont"
+        android:textColor="@color/C2"
         android:hint="Название плейлиста"
         android:textColorHint="@color/C2"
         android:textCursorDrawable="@drawable/cursor"

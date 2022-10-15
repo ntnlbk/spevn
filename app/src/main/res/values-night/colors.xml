@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="C1">#110e21</color>
+    <color name="C1">#333333</color>
     <color name="C2">#ffffff</color>
     <color name="C3">#424242</color>
     <color name="C4">#707070</color>
-    <color name="C5">#16132b</color>
+    <color name="C5">#4D4D4D</color>
     <color name="C6">#ffffff</color>
+    <color name="C7">#30000000</color>
+    <color name="C8">#241e45</color>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUsActivity">
+    tools:context=".AboutUsActivity"
+    android:background="@color/C1">
 
     <TextView
         android:id="@+id/textView19"
@@ -16,7 +17,7 @@
         android:layout_marginTop="32dp"
         android:fontFamily="@font/myfont"
         android:text="flynidDev@gmail.com"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <TextView
@@ -29,7 +30,7 @@
         android:layout_marginTop="51dp"
         android:fontFamily="@font/myfont"
         android:text="Связь"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="24dp"
         android:textStyle="bold" />
 
@@ -43,7 +44,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/myfont"
         android:text="2022"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <TextView
@@ -56,7 +57,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/myfont"
         android:text="Браслав"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <ImageView
@@ -89,7 +90,7 @@
         android:layout_marginTop="88dp"
         android:fontFamily="@font/myfont"
         android:text="Информация"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -102,7 +103,7 @@
         android:layout_marginTop="170dp"
         android:fontFamily="@font/myfont"
         android:text="Основная"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="24dp"
         android:textStyle="bold" />
 
@@ -115,7 +116,7 @@
         android:layout_marginTop="219dp"
         android:fontFamily="@font/myfont"
         android:text="Сделано FlyNid"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <TextView
@@ -128,7 +129,7 @@
         android:layout_marginTop="54dp"
         android:fontFamily="@font/myfont"
         android:text="Санктуарый Маці Божай Валадаркі Азёраў"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <Button
@@ -138,11 +139,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="#FFD645"
+        android:background="@color/C6"
         android:fontFamily="@font/myfont"
         android:text="Помочь проекту"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/C1"
         android:textSize="18dp"
         android:textStyle="bold" />
 </RelativeLayout>

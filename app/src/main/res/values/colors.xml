@@ -4,6 +4,8 @@
     <color name="C2">#000000</color>
     <color name="C3">#F1F2F5</color>
     <color name="C4">#33000000</color>
-    <color name="C5">#FFD645</color>
+    <color name="C5">#ffffff</color>
     <color name="C6">#FFD645</color>
+    <color name="C7">#fff3c8</color>
+    <color name="C8">#F2F2F2</color>
 </resources>

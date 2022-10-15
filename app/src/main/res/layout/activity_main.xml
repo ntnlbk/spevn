@@ -9,7 +9,6 @@
     android:background="#00E5E5E5"
     tools:context=".MainActivity"
 
-
     >
     <!--  tools:openDrawer="start"  для того, чтобы видеть в редакторе navigationview -->
 
@@ -23,8 +22,8 @@
             android:id="@+id/acceptbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentRight="true"
+            android:layout_marginRight="-3dp"
             android:background="#00000000"
             android:clickable="true"
             android:paddingLeft="31dp"
@@ -38,7 +37,6 @@
             android:id="@+id/morebtnchecked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentRight="true"
             android:background="#00000000"
             android:clickable="true"
@@ -71,7 +69,7 @@
             android:fontFamily="@font/myfont"
             android:gravity="center"
             android:text="0 выбрано"
-            android:textColor="#ffffff"
+            android:textColor="@color/C2"
             android:textSize="18dp" />
     </RelativeLayout>
 
@@ -275,7 +273,7 @@
                 android:gravity="center"
                 android:paddingRight="6dp"
                 android:text="Помочь проекту"
-                android:textColor="#000000">
+                android:textColor="@color/C2">
 
             </TextView>
 
