@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="yellow">#FFC806</color>
+    <color name="white">#FFFFFF</color>
     <color name="C1">#333333</color>
-    <color name="C2">#ffffff</color>
+    <color name="C2">#C7C7C7</color>
     <color name="C3">#424242</color>
     <color name="C4">#707070</color>
     <color name="C5">#4D4D4D</color>
     <color name="C6">#ffffff</color>
-    <color name="C7">#30000000</color>
-    <color name="C8">#241e45</color>
+    <color name="C7">#60FAD860</color>
+    <color name="C8">#4D4D4D</color>
+    <color name="C9">#FFFFFF</color>
+    <color name="C10">#3D3D3D</color>
+    <color name="C11">#C7C7C7</color>
 </resources>

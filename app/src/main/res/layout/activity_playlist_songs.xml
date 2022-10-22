@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/C1"
     tools:context=".PlaylistSongsActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:fontFamily="@font/myfont"
         android:gravity="center"
         android:text="Тут еще нет песен. Хотите добавить?"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="20dp"
         android:textStyle="bold"
         android:visibility="visible" />
@@ -36,7 +36,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:background="#FFD645">
+        android:background="@color/C5">
 
         <TextView
             android:id="@+id/name"
@@ -44,8 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/myfont"
-            android:textColor="#FFFFFF"
-            android:textSize="20dp" />
+            android:textColor="@color/C2"
+            android:textSize="20dp"
+            android:text="sdfsdf"/>
 
         <ImageButton
             android:id="@+id/backbtnsongsplaylist"
@@ -100,7 +101,7 @@
         android:layout_marginTop="102dp"
         android:layout_marginEnd="31dp"
         android:layout_marginRight="31dp"
-        android:divider="#ffffff"
+        android:divider="@color/C1"
         android:dividerHeight="10.5px"
         android:listSelector="@android:color/transparent"
         android:longClickable="true"

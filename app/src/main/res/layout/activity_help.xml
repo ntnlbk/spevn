@@ -74,7 +74,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Помочь финансово"
-                android:textColor="@color/C2"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -117,7 +117,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Добавить песню"
-                android:textColor="@color/C2"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -160,7 +160,7 @@
                 android:fontFamily="@font/myfont"
                 android:text="Добавить аудиозапись
 к существующей песне"
-                android:textColor="@color/C2"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -203,7 +203,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Посмотреть рекламу"
-                android:textColor="@color/C2"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 

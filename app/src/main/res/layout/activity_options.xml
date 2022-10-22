@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OptionsActivity">
+    tools:context=".OptionsActivity"
+    android:background="@color/C1">
 
     <ImageButton
         android:id="@+id/plustextsize"
@@ -49,7 +50,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="7"
-        android:textColor="#99000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <TextView
@@ -62,7 +63,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="Размер шрифта"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <ImageView
@@ -101,7 +102,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="7"
-        android:textColor="#99000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <ImageButton
@@ -146,7 +147,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="Изменить цвет аккордов"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <TextView
@@ -159,7 +160,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="Транспонировать"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <ImageView
@@ -200,7 +201,7 @@
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
         android:text="Показывать аккорды"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="18dp" />
 
     <ImageView
@@ -226,7 +227,7 @@
         android:layout_marginTop="88dp"
         android:fontFamily="@font/myfont"
         android:text="Настройки"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="30dp"
         android:textStyle="bold" />
 

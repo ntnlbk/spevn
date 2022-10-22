@@ -193,7 +193,7 @@ public class addaudioactivity extends AppCompatActivity {
                 }
                 nameofsong = data.getStringExtra("name");
                 choosetext.setText(nameofsong);
-                choosetext.setTextColor(Color.BLACK);
+                choosetext.setTextColor(getResources().getColor(R.color.C2));
                 super.onActivityResult(requestCode, resultCode, data);
                 break;
             case 2:

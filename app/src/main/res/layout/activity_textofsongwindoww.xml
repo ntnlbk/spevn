@@ -10,14 +10,12 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
 
-    android:layout_margin="15dp"
-    android:layout_marginBottom="30dp"
     android:gravity="center"
-
-
     android:paddingBottom="25dp"
-    android:scrollbars="vertical">
-
+    android:scrollbars="vertical"
+    android:background="@color/C1">
+    <!--    android:layout_margin="15dp"
+        android:layout_marginBottom="30dp"-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -26,9 +24,7 @@
         android:layout_marginBottom="36dp"
         android:fontFamily="@font/myfont"
         android:gravity="center_horizontal"
-        android:textColor="#000000"
-
-
+        android:textColor="@color/C2"
         android:textSize="20dp" />
 
     <ImageButton
@@ -73,7 +69,7 @@
         android:fontFamily="@font/myfont"
         android:gravity="center"
         android:text="Название"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textSize="24dp"
         android:textStyle="bold" />
 
@@ -98,7 +94,7 @@
         android:paddingTop="20.81dp"
         android:paddingBottom="2dp"
         android:text="послушать"
-        android:textColor="#000000"
+        android:textColor="@color/C2"
         android:textStyle="bold" />
 
     <ProgressBar

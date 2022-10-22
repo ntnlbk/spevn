@@ -80,7 +80,7 @@
             android:layout_marginBottom="25dp"
             android:gravity="center"
             android:text="Закрыть"
-            android:textColor="@color/C5"
+            android:textColor="@color/yellow"
             android:textSize="16dp" />
 
     </LinearLayout>

@@ -69,7 +69,7 @@
         android:layout_marginEnd="-46dp"
         android:layout_marginRight="-46dp"
         android:layout_marginBottom="-4.5dp"
-        app:srcCompat="@drawable/flynid2" />
+        app:srcCompat="@drawable/flynid3" />
 
     <ImageButton
         android:id="@+id/backbtninaboutus"
@@ -79,7 +79,7 @@
         android:paddingLeft="32dp"
         android:paddingTop="24.42dp"
         android:scaleType="fitXY"
-        android:src="@drawable/yellowback" />
+        android:src="@drawable/back2" />
 
     <TextView
         android:id="@+id/textView11"
@@ -139,11 +139,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@color/C6"
+        android:background="@color/yellow"
         android:fontFamily="@font/myfont"
         android:text="Помочь проекту"
         android:textAllCaps="false"
-        android:textColor="@color/C1"
+        android:textColor="@color/white"
         android:textSize="18dp"
         android:textStyle="bold" />
 </RelativeLayout>

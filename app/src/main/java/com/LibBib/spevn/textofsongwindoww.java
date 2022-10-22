@@ -69,6 +69,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     ArrayList<String> majorchords7 = new ArrayList<String>(); // мажорные с семеркой
     ArrayList<String> minorchords7 = new ArrayList<String>(); // минорные с семеркой
     String textt;
+    private int COLORchecked;
+    private int COLORunchecked;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         setContentView(R.layout.activity_textofsongwindoww);
         namesofsongs = getResources().getStringArray(R.array.names);
         texts = getResources().getStringArray(R.array.texts);
+        COLORchecked = getResources().getColor(R.color.C2);
+        COLORunchecked = getResources().getColor(R.color.C4);
         majorchords.add("C");
         majorchords.add("C#");
         majorchords.add("D");
@@ -149,7 +153,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 e.printStackTrace();
             }
             songs.setLayoutManager((new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)));  // recyclerview работа
-            AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name);
+            AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name, COLORchecked, COLORunchecked);
             adapter.setClickListener(textofsongwindoww.this);
             songs.setAdapter(adapter);
             songs.scrollToPosition(namesofsongsfromplaylist.indexOf(name));
@@ -630,7 +634,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     }
     public void changesogs(int position) {
         name = namesofsongsfromplaylist.get(position);
-        AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name);
+        AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name, COLORchecked,COLORunchecked);
         adapter.setClickListener(textofsongwindoww.this);
         songs.setAdapter(adapter);
         songs.scrollToPosition(position);
