@@ -2,6 +2,7 @@ package com.LibBib.spevn;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
@@ -280,8 +281,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     intent.putExtra("nameofplaylist", "noplaylist");
                 }
                 intent.putExtra("имя", name);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
+
             }
         });
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -465,6 +467,32 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 return false;
             }
         });
+        int darktheme = 0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
     public int searchchords(int i, char[] a) {                                                           // главная функция транспонирования, тут определяется длинна аккорда, потом ее замена по
         if (a[i] != 35 && a[i] != 55) {                                                                     // транспонированию и возврат в гланвыхй цикл.
@@ -733,6 +761,10 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         istask = false;
         if (player != null)
             player.stop();
+        if (!isfromplaylist.equals("true")) {
+            Intent intent = new Intent(textofsongwindoww.this, MainActivity.class);
+            startActivity(intent);
+        }
         super.onBackPressed();
     }
     public static boolean hasConnection(final Context context) {

@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     @Override
     public void progressbar() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
+        finish();
     }
 
     @Override
@@ -349,7 +350,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
          C2 = getResources().getColor(R.color.C2);
          C4 = getResources().getColor(R.color.C4);
         namesofsongs = getResources().getStringArray(R.array.names);
@@ -393,6 +394,34 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         filtry.add("Части имши");
         filtry.add("Короткие");
         filtry.add("Длинные");
+        int darktheme =0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
         if (intent.getStringExtra("playlistsong") != null) {
             playlistsongs = intent.getStringExtra("playlistsong");
             mymethod();
@@ -524,6 +553,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PlaylistActivity.class);
                 startActivity(intent);
+                finish();
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -805,6 +835,33 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     }
     @Override
     protected void onResume() {
+        int darktheme=0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onResume();
         mAdView.resume();
         progressBar.setVisibility(ProgressBar.INVISIBLE);

@@ -48,6 +48,12 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
     Map<String, Integer> chislo = new HashMap<String, Integer>();
 
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(PlaylistActivity.this, MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
