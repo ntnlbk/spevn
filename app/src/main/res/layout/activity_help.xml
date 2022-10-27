@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".HelpActivity">
+        tools:context=".HelpActivity"
+        android:background="@color/C1">
 
         <ImageView
             android:id="@+id/backbtn3"
@@ -31,7 +32,7 @@
             android:layout_marginTop="9.17dp"
             android:fontFamily="@font/myfont"
             android:text="Помощь проекту"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="30dp"
             android:textStyle="bold" />
 
@@ -43,7 +44,7 @@
             android:layout_marginTop="23dp"
             android:fontFamily="@font/myfont"
             android:text="Как вы можете помочь нам:"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="18dp"
             android:textStyle="" />
 
@@ -73,7 +74,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Помочь финансово"
-                android:textColor="#000000"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -86,7 +87,7 @@
                 android:fontFamily="@font/myfont"
                 android:text="Ваши деньги пойдут на дальнейшее
 развитие проекта"
-                android:textColor="#000000"
+                android:textColor="@color/C2"
                 android:textSize="12dp" />
         </LinearLayout>
 
@@ -116,7 +117,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Добавить песню"
-                android:textColor="#000000"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -128,7 +129,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Предложите песню, которую можно добавить в библиотеку."
-                android:textColor="#000000"
+                android:textColor="@color/C2"
                 android:textSize="12dp" />
         </LinearLayout>
 
@@ -159,7 +160,7 @@
                 android:fontFamily="@font/myfont"
                 android:text="Добавить аудиозапись
 к существующей песне"
-                android:textColor="#000000"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -171,7 +172,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Помогите сделать так, чтобы все песни можно было послушать"
-                android:textColor="#000000"
+                android:textColor="@color/C2"
                 android:textSize="12dp" />
 
         </LinearLayout>
@@ -202,7 +203,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Посмотреть рекламу"
-                android:textColor="#000000"
+                android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
@@ -214,7 +215,7 @@
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
                 android:text="Посмотрите короткую рекламу, чтобы помочь проекту"
-                android:textColor="#000000"
+                android:textColor="@color/C2"
                 android:textSize="12dp" />
 
         </LinearLayout>

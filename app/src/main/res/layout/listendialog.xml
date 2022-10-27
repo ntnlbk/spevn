@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/listendialogstyle"
-        android:backgroundTint="#FFD645"
+        android:backgroundTint="@color/C10"
         android:backgroundTintMode="src_in"
         android:orientation="vertical">
 
@@ -30,7 +30,7 @@
             android:fontFamily="@font/myfont"
             android:gravity="center"
             android:text="EX ANIMA"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/C11"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                     android:layout_marginLeft="90dp"
                     android:fontFamily="@font/myfont"
                     android:text="0:00"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/C11"
                     android:textStyle="bold" />
 
                 <TextView
@@ -74,7 +74,7 @@
                     android:layout_marginRight="90dp"
                     android:fontFamily="@font/myfont"
                     android:text="0:00"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/C11"
                     android:textStyle="bold" />
             </RelativeLayout>
         </LinearLayout>

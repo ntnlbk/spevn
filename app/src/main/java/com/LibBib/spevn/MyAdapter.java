@@ -196,6 +196,7 @@ public class MyAdapter extends ArrayAdapter<String> implements Filterable {
 
         ((MyIntefrace) context).progressbar();
 
+
     }
 
     public void changeid(int idm) {

@@ -24,12 +24,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="@color/C1"
                 android:orientation="vertical">
 
                 <ImageView
@@ -50,7 +50,7 @@
                     android:layout_marginTop="22.17dp"
                     android:fontFamily="@font/myfont"
                     android:text="Добавление песни"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/myfont"
                     android:text="Заполните небольшую форму"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="18dp"
                     android:textStyle="normal" />
 
@@ -74,7 +74,7 @@
                     android:layout_marginTop="23dp"
                     android:fontFamily="@font/myfont"
                     android:text="Ваше имя"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -90,9 +90,10 @@
                     android:ems="10"
                     android:fontFamily="@font/myfont"
                     android:hint="Имя"
+                    android:textColorHint="@color/C2"
                     android:inputType="textPersonName"
                     android:paddingLeft="21dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp" />
 
                 <TextView
@@ -103,7 +104,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/myfont"
                     android:text="Автор песни (если известно)"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -121,7 +122,8 @@
                     android:hint="Автор"
                     android:inputType="textPersonName"
                     android:paddingLeft="21dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
+                    android:textColorHint="@color/C2"
                     android:textSize="16dp" />
 
                 <TextView
@@ -132,7 +134,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/myfont"
                     android:text="Название песни"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -148,9 +150,10 @@
                     android:ems="10"
                     android:fontFamily="@font/myfont"
                     android:hint="Название "
+                    android:textColorHint="@color/C2"
                     android:inputType="textPersonName"
                     android:paddingLeft="21dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp" />
 
                 <TextView
@@ -161,7 +164,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/myfont"
                     android:text="Текст и аккорды"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -180,7 +183,8 @@
                     android:inputType="textMultiLine"
                     android:paddingLeft="21dp"
                     android:paddingRight="21dp"
-                    android:textColor="#000000"
+                    android:textColorHint="@color/C2"
+                    android:textColor="@color/C2"
                     android:textSize="16dp" />
 
                 <TextView
@@ -193,7 +197,7 @@
                     android:fontFamily="@font/myfont"
                     android:gravity="center"
                     android:text="или вы можете прикрепить текстовый файл"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 
@@ -220,7 +224,7 @@
                     android:layout_marginTop="11dp"
                     android:fontFamily="@font/myfont"
                     android:text="Вы можете приложить аудиозапись"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -232,7 +236,7 @@
                     android:layout_marginTop="23dp"
                     android:fontFamily="@font/myfont"
                     android:text="Ссылка на аудиофайл  (YouTube, GoogleDisk...)"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="14dp"
                     android:textStyle="bold" />
 
@@ -250,7 +254,8 @@
                     android:hint="Ссылка"
                     android:inputType="textPersonName"
                     android:paddingLeft="21dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
+                    android:textColorHint="@color/C2"
                     android:textSize="16dp" />
 
                 <TextView
@@ -262,7 +267,7 @@
                     android:layout_marginRight="30dp"
                     android:fontFamily="@font/myfont"
                     android:text="или вы можете прикрепить аудиофайл"
-                    android:textColor="#000000"
+                    android:textColor="@color/C2"
                     android:textSize="12dp"
                     android:textStyle="bold" />
 

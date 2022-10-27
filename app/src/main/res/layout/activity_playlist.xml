@@ -5,13 +5,13 @@
     android:id="@+id/relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/C1"
     tools:context=".PlaylistActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:background="#FFD645">
+        android:background="@color/C5">
 
         <TextView
             android:id="@+id/textView7"
@@ -20,7 +20,7 @@
             android:layout_centerInParent="true"
             android:fontFamily="@font/myfont"
             android:text="Плейлисты"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/C2"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
         android:layout_marginTop="102dp"
         android:layout_marginEnd="31dp"
         android:layout_marginRight="31dp"
-        android:divider="#ffffff"
+        android:divider="@color/C1"
         android:dividerHeight="10.5px"
         android:listSelector="@android:color/transparent"
         android:longClickable="true"

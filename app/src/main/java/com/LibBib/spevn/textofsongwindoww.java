@@ -2,6 +2,7 @@ package com.LibBib.spevn;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
@@ -41,7 +42,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 public class textofsongwindoww extends AppCompatActivity implements AdapterForRec.ItemClickListener {
-    private InterstitialAd mInterstitial;
     private String gloriabegin = "G D C D <br/>";
     FileDownloadTask task;
     private boolean istask = false;
@@ -63,12 +63,15 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     private SeekBar seek;
     private RecyclerView songs;
     private int tonalnost = 0; //тональность
+    private int textsizechange = 0; //изменение шрифта
     private String color = ""; // цвет аккордов (код цвета)
     ArrayList<String> majorchords = new ArrayList<String>(); //список мажорных аккордов
     ArrayList<String> minorchords = new ArrayList<String>(); //список минорных аккордов
     ArrayList<String> majorchords7 = new ArrayList<String>(); // мажорные с семеркой
     ArrayList<String> minorchords7 = new ArrayList<String>(); // минорные с семеркой
     String textt;
+    private int COLORchecked;
+    private int COLORunchecked;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,8 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         setContentView(R.layout.activity_textofsongwindoww);
         namesofsongs = getResources().getStringArray(R.array.names);
         texts = getResources().getStringArray(R.array.texts);
+        COLORchecked = getResources().getColor(R.color.C2);
+        COLORunchecked = getResources().getColor(R.color.C4);
         majorchords.add("C");
         majorchords.add("C#");
         majorchords.add("D");
@@ -149,7 +154,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 e.printStackTrace();
             }
             songs.setLayoutManager((new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)));  // recyclerview работа
-            AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name);
+            AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name, COLORchecked, COLORunchecked);
             adapter.setClickListener(textofsongwindoww.this);
             songs.setAdapter(adapter);
             songs.scrollToPosition(namesofsongsfromplaylist.indexOf(name));
@@ -191,6 +196,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     case 2:
                         tonalnost = Integer.parseInt(src); // третья - тональность
                         break;
+                    case 3:
+                        textsizechange = Integer.parseInt(src);
+                        break;
                 }
                 i++;
             }
@@ -199,14 +207,21 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
             checkshowchods = "1";
             color = "fa0000";
             tonalnost = 0;
+            textsizechange = 0;
             e.printStackTrace();
         } catch (IOException e) {
             checkshowchods = "1";
             color = "fa0000";
             tonalnost = 0;
+            textsizechange = 0;
             e.printStackTrace();
         }
         showchords = Integer.parseInt(checkshowchods);
+
+        if (textsizechange <= -6)
+            textsizechange=-6;
+        text.setTextSize(20f + textsizechange*1.5f);
+
         for (int i = 0; i < a.length; i++) {
             if (a[i] >= 65 && a[i] <= 122 && a[i] != 105 && a[i] != 98 && a[i] != 73 && a[i] != 114 || a[i] == 35 || a[i] == 55) {  //выделяем аккорды красным цветом
                 if (showchords == 1) {
@@ -266,8 +281,9 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                     intent.putExtra("nameofplaylist", "noplaylist");
                 }
                 intent.putExtra("имя", name);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
+
             }
         });
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -289,7 +305,12 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 TextView alltime = (TextView) promptsView.findViewById(R.id.alltime);
                 TextView curtime = (TextView) promptsView.findViewById(R.id.momenttime);
                 TextView nameofsong = (TextView) promptsView.findViewById(R.id.nameofsong);
-                nameofsong.setText(name);
+                if (name.equals("У Табе жыву") || name.equals("Кожны, хто чуе") || name.equals("Пан уваскрос, Езус жыве")
+                || name.equals("Вывышаю Цябе") || name.equals("Віа Далароса") || name.equals("Жыццё Табе аддаю")) {
+                    nameofsong.setText("За спеў падзяка каналу t.me/spevy");
+                } else {
+                    nameofsong.setText(name);
+                }
                 final Dialog dialog = builder.create();
                 closedialog.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -446,6 +467,32 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                 return false;
             }
         });
+        int darktheme = 0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
     public int searchchords(int i, char[] a) {                                                           // главная функция транспонирования, тут определяется длинна аккорда, потом ее замена по
         if (a[i] != 35 && a[i] != 55) {                                                                     // транспонированию и возврат в гланвыхй цикл.
@@ -615,7 +662,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
     }
     public void changesogs(int position) {
         name = namesofsongsfromplaylist.get(position);
-        AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name);
+        AdapterForRec adapter = new AdapterForRec(this, namesofsongsfromplaylist, name, COLORchecked,COLORunchecked);
         adapter.setClickListener(textofsongwindoww.this);
         songs.setAdapter(adapter);
         songs.scrollToPosition(position);
@@ -714,6 +761,10 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         istask = false;
         if (player != null)
             player.stop();
+        if (!isfromplaylist.equals("true")) {
+            Intent intent = new Intent(textofsongwindoww.this, MainActivity.class);
+            startActivity(intent);
+        }
         super.onBackPressed();
     }
     public static boolean hasConnection(final Context context) {

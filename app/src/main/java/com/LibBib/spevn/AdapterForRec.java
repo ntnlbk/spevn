@@ -1,5 +1,6 @@
 package com.LibBib.spevn;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -18,12 +19,15 @@ public class AdapterForRec extends RecyclerView.Adapter<AdapterForRec.ViewHolder
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private String nameofcurrentsong;
+    private int COLORchecked, COLORunchecked;
 
     // data is passed into the constructor
-    AdapterForRec(Context context, List<String> data, String nameofcurrentsong) {
+    AdapterForRec(Context context, List<String> data, String nameofcurrentsong, int COLORchecked, int COLORunchecked) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.nameofcurrentsong=nameofcurrentsong;
+        this.COLORchecked=COLORchecked;
+        this.COLORunchecked=COLORunchecked;
     }
 
     // inflates the row layout from xml when needed
@@ -34,14 +38,15 @@ public class AdapterForRec extends RecyclerView.Adapter<AdapterForRec.ViewHolder
     }
 
     // binds the data to the TextView in each row
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String nameofsong = mData.get(position);
         holder.myTextView.setText(nameofsong);
         if(nameofsong.equals(nameofcurrentsong))
-            holder.myTextView.setTextColor(Color.parseColor("#000000"));
+            holder.myTextView.setTextColor(COLORchecked);
         else
-            holder.myTextView.setTextColor(Color.parseColor("#33000000"));
+            holder.myTextView.setTextColor(COLORunchecked);
     }
 
     // total number of rows

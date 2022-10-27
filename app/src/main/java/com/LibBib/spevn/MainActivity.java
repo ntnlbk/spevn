@@ -2,6 +2,7 @@ package com.LibBib.spevn;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -13,11 +14,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -61,7 +62,9 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
-    private int a;
+
+    private int C2 ;
+    private  int C4;
     private String[] namesofsongs, texts, temp2, types, nameofsongsdin;
     private ListView listt;
     private TextView allsongs, xsongs, shortsongs, longsongs, maintextbtn, playlisttextbtn, aboutustextbtn, optionstextbtn, howmanycheckedtxt, randomsongbtn, addsongbtn, helpbtn;
@@ -83,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private Map<String, String> typesofsongs = new HashMap<>();
     private int filtr = 0;
     private SharedPreferences prefs;
+
 
 
     @Override
@@ -119,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     @Override
     public void progressbar() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
+        finish();
     }
 
     @Override
@@ -228,8 +233,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             playlists.requestLayout();
         }
         String[] temp = namesofplaylists.toArray(new String[0]);
-        final Dialog dialog = builder.create();
-        maindialog = dialog;
+        final Dialog CustomDialog = builder.create();
+        maindialog = CustomDialog;
         AdapterForPlaylist adapter = new AdapterForPlaylist(this, temp, temp, chislo, true, temp2);
         playlists.setAdapter(adapter);
 
@@ -237,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.dismiss();
+                CustomDialog.dismiss();
             }
         });
         addnewplaylist.setOnClickListener(new View.OnClickListener() {
@@ -295,7 +300,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         });
 
 
-        dialog.show();
+        CustomDialog.show();
     }
 
     @Override
@@ -345,6 +350,9 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+         C2 = getResources().getColor(R.color.C2);
+         C4 = getResources().getColor(R.color.C4);
         namesofsongs = getResources().getStringArray(R.array.names);
         nameofsongsdin = namesofsongs;
         listItems = new ArrayList<>(Arrays.asList(namesofsongs));
@@ -386,6 +394,34 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         filtry.add("Части имши");
         filtry.add("Короткие");
         filtry.add("Длинные");
+        int darktheme =0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
         if (intent.getStringExtra("playlistsong") != null) {
             playlistsongs = intent.getStringExtra("playlistsong");
             mymethod();
@@ -517,6 +553,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PlaylistActivity.class);
                 startActivity(intent);
+                finish();
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
@@ -716,10 +753,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     }
     public void allsongs(View view) {
         filtr = 0;
-        allsongs.setTextColor(Color.parseColor("#000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        allsongs.setTextColor(C2);
+        xsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
         nameofsongsdin = namesofsongs;
         ArrayList<String> temp = new ArrayList<String>();
         ArrayList<String> temp2 = adapter2.getCheckedpos();
@@ -747,10 +784,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        xsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        xsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
     }
     public void shortsongs(View view) {
         filtr = 2;
@@ -769,10 +806,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        shortsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        longsongs.setTextColor(Color.parseColor("#33000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
+        shortsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        longsongs.setTextColor(C4);
+        xsongs.setTextColor(C4);
     }
     public void longsongs(View view) {
         filtr = 3;
@@ -791,13 +828,40 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         }
         adapter2 = new MyAdapter(MainActivity.this, temp3.toArray(new String[0]), namesofsongs, "Main", longclick, temp2, typesofsongs, false, "noplaylist", audiochoose);
         listt.setAdapter(adapter2);
-        longsongs.setTextColor(Color.parseColor("#000000"));
-        allsongs.setTextColor(Color.parseColor("#33000000"));
-        xsongs.setTextColor(Color.parseColor("#33000000"));
-        shortsongs.setTextColor(Color.parseColor("#33000000"));
+        longsongs.setTextColor(C2);
+        allsongs.setTextColor(C4);
+        xsongs.setTextColor(C4);
+        shortsongs.setTextColor(C4);
     }
     @Override
     protected void onResume() {
+        int darktheme=0;
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
+            int i=0;
+
+            String src="";
+            while ((src = br.readLine()) != null){
+                switch (i) {
+                    case 4:
+                        darktheme=Integer.parseInt(src);
+                        break;
+                }
+                i++;
+            }
+
+        } catch (FileNotFoundException e) {
+            darktheme=0;
+            e.printStackTrace();
+        } catch (IOException e) {
+            darktheme=0;
+            e.printStackTrace();
+        }
+        if (darktheme==1)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onResume();
         mAdView.resume();
         progressBar.setVisibility(ProgressBar.INVISIBLE);

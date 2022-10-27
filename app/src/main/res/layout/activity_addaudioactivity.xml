@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/C1"
     android:orientation="vertical"
     tools:context=".addaudioactivity" >
 
@@ -45,7 +45,7 @@
             android:layout_marginTop="22.17dp"
             android:fontFamily="@font/myfont"
             android:text="Добавление аудиозаписи"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="30dp"
             android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/myfont"
             android:text="Заполните небольшую форму"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="18dp"
             android:textStyle="normal" />
         <TextView
@@ -79,7 +79,7 @@
             android:layout_marginTop="23dp"
             android:fontFamily="@font/myfont"
             android:text="Ваше имя"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -97,7 +97,8 @@
             android:hint="Имя"
             android:inputType="textPersonName"
             android:paddingLeft="21dp"
-            android:textColor="#000000"
+            android:textColorHint="@color/C2"
+            android:textColor="@color/C2"
             android:textSize="16dp" />
 
         <TextView
@@ -108,7 +109,7 @@
             android:layout_marginTop="30dp"
             android:fontFamily="@font/myfont"
             android:text="Автор песни (если известно)"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -126,7 +127,8 @@
             android:hint="Автор"
             android:inputType="textPersonName"
             android:paddingLeft="21dp"
-            android:textColor="#000000"
+            android:textColorHint="@color/C2"
+            android:textColor="@color/C2"
             android:textSize="16dp" />
 
         <TextView
@@ -137,7 +139,7 @@
             android:layout_marginTop="23dp"
             android:fontFamily="@font/myfont"
             android:text="Ссылка на аудиофайл  (YouTube, GoogleDisk...)"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -155,7 +157,8 @@
             android:hint="Ссылка"
             android:inputType="textPersonName"
             android:paddingLeft="21dp"
-            android:textColor="#000000"
+            android:textColorHint="@color/C2"
+            android:textColor="@color/C2"
             android:textSize="16dp" />
 
         <TextView
@@ -167,7 +170,7 @@
             android:layout_marginRight="30dp"
             android:fontFamily="@font/myfont"
             android:text="или вы можете прикрепить аудиофайл"
-            android:textColor="#000000"
+            android:textColor="@color/C2"
             android:textSize="12dp"
             android:textStyle="bold" />
         <TextView
