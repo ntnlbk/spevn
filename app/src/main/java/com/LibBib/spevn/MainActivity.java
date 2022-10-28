@@ -632,7 +632,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
                 // Log.d("MyLog", "Value is: " + value);
-                if (!value.equals("7")) {
+                if (!value.equals("8")) {
                     String title = "Новая версия доступна!";
                     String message = "Пожалуйста, обновите приложение";
                     String button1String = "Обновить";
