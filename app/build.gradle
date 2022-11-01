@@ -3,15 +3,15 @@ apply plugin: 'com.google.gms.google-services'
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
 
     defaultConfig {
 
         applicationId "com.LibBib.spevn"
         minSdkVersion 22
-        targetSdkVersion 30
-        versionCode 20
-        versionName "20"
+        targetSdkVersion 33
+        versionCode 21
+        versionName "21"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

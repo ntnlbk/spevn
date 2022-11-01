@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     android:background="#00E5E5E5"
     tools:context=".MainActivity"
-
     >
     <!--  tools:openDrawer="start"  для того, чтобы видеть в редакторе navigationview -->
 
