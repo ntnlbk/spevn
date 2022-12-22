@@ -23,7 +23,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="Спеўнік"
+        android:text="@string/app_name"
         android:textColor="#000000"
         android:textSize="20dp" />
 
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Самые популярные католические песни  со словами и аккордами"
+        android:text="@string/the_most_popular_catholics_songs"
         android:textColor="#000000"
         android:textSize="15dp" />
 

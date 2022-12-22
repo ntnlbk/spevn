@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
     @Override
     public void updatetextchecked(int i) {
-        howmanycheckedtxt.setText(String.valueOf(i) + " выбрано");
+        howmanycheckedtxt.setText(String.valueOf(i) + getResources().getString(R.string.checked));
     }
 
     @Override
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     bw.write(positions.get(i));
                     bw.newLine();
                 } else {
-                    Toast.makeText(MainActivity.this, "Песня " + positions.get(i) + " уже есть в избранном", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + positions.get(i) + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -261,8 +261,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     public void onClick(View view) {
                         try {
                             String name = userInput.getText().toString();
-                            if (name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
-                                Toast.makeText(MainActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
+                            if (name.equals("Избранное") || name.equals("") || namesofplaylists.contains(name))
+                                Toast.makeText(MainActivity.this, getResources().getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                             else {
                                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
                                 bw.write(name);
@@ -325,7 +325,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     bw.write(namesofsongstoadd[i]);
                     bw.newLine();
                 } else {
-                    Toast.makeText(MainActivity.this, "Песня " + namesofsongstoadd[i] + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + namesofsongstoadd[i] + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
+
                 }
             }
             bw.close();
@@ -348,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
@@ -362,6 +364,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         for (int i = 0; i < namesofsongs.length; i++) {
             typesofsongs.put(namesofsongs[i], types[i]);
         }
+        Resources resourses = getResources();
         listt = (ListView) findViewById(R.id.namess);
         searchtext = (EditText) findViewById(R.id.editText);
         allsongs = (TextView) findViewById(R.id.allsongs);
@@ -456,7 +459,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                                     bw.write(songs.get(i));
                                     bw.newLine();
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Песня " + songs.get(i) + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + songs.get(i) + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
+
                                 }
                             }
                             bw.close();
@@ -631,12 +635,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
+
                 // Log.d("MyLog", "Value is: " + value);
-                if (!value.equals("8")) {
-                    String title = "Новая версия доступна!";
-                    String message = "Пожалуйста, обновите приложение";
-                    String button1String = "Обновить";
-                    String button2String = "Пропустить обновление";
+                if (!value.equals("9")) {
+                    String title = resourses.getString(R.string.update_is_available);
+                    String message = resourses.getString(R.string.please_update);
+                    String button1String = resourses.getString(R.string.update);
+                    String button2String = resourses.getString(R.string.skip_update);
                     final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle(title);  // заголовок
                     builder.setMessage(message); // сообщение

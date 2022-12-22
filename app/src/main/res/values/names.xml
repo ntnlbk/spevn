@@ -1,6 +1,7 @@
 
 <resources>
     <string-array name="names">
+        <item>Акіяны</item>
         <item>Аллелюя, Езус смерць перамог</item>
         <item>Ахвярую Табе</item>
         <item>Баранку Божы(h)</item>
@@ -140,6 +141,7 @@
         <item>Ягнятка ціхае Святое</item>
     </string-array>
     <string-array name="typesofsongs">
+        <item>Длинные</item>//Акіяны
         <item>Длинные</item>//Аллелюя, Езус смерць перамог
         <item>Короткие</item> //Ахвярую Табе
         <item>Части имши, короткие</item> //Баранку Божы(h)
