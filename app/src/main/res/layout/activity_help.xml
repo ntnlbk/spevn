@@ -169,7 +169,7 @@
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
-                android:text="Помогите сделать так, чтобы все песни можно было послушать"
+                android:text="@string/help_add_audio_to_all_songs"
                 android:textColor="@color/C2"
                 android:textSize="12dp" />
 
@@ -200,7 +200,7 @@
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
-                android:text="Посмотреть рекламу"
+                android:text="@string/watch_ad"
                 android:textColor="@color/C9"
                 android:textSize="16dp"
                 android:textStyle="bold" />
@@ -212,7 +212,7 @@
                 android:layout_marginLeft="21dp"
                 android:layout_marginTop="11dp"
                 android:fontFamily="@font/myfont"
-                android:text="Посмотрите короткую рекламу, чтобы помочь проекту"
+                android:text="@string/watch_ad_to_help_us"
                 android:textColor="@color/C2"
                 android:textSize="12dp" />
 
