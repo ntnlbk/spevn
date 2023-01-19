@@ -414,7 +414,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                                 else
                                     alltime.setText(minutes + ":" + seconds);
                             } else if (!hasConnection(textofsongwindoww.this)) {
-                                Toast.makeText(textofsongwindoww.this, "Проверьте подключение к интернету", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(textofsongwindoww.this, getString(R.string.check_internet_connection), Toast.LENGTH_SHORT).show();
                                 playbtn.setImageResource(R.drawable.playbtn);
                             } else if (!player.isPlaying()) {
                                 istask = true;
@@ -437,7 +437,7 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(textofsongwindoww.this, "Запись песни отсутствует", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(textofsongwindoww.this, getString(R.string.there_is_not_audio), Toast.LENGTH_SHORT).show();
                                         playbtn.setClickable(true);
                                         playbtn.setImageResource(R.drawable.playbtn);
                                         progress.setVisibility(View.INVISIBLE);

@@ -20,7 +20,7 @@
             android:drawableStart="@drawable/plus"
             android:drawablePadding="9dp"
             android:fontFamily="@font/myfont"
-            android:text="Добавить песни в плейлист"
+            android:text="@string/add_songs_to_playlist"
             android:textAllCaps="false"
             android:textColor="@color/C2"
             android:textSize="18sp" />
@@ -43,7 +43,7 @@
             android:drawableStart="@drawable/redact"
             android:drawablePadding="9dp"
             android:fontFamily="@font/myfont"
-            android:text="Изменить название"
+            android:text="@string/changing_name"
             android:textAllCaps="false"
             android:textColor="@color/C2"
             android:textSize="18sp" />
@@ -65,7 +65,7 @@
             android:drawableStart="@drawable/delete"
             android:drawablePadding="9dp"
             android:fontFamily="@font/myfont"
-            android:text="Удалить плейлист"
+            android:text="@string/delete_playlist"
             android:textAllCaps="false"
             android:textColor="@color/C2"
             android:textSize="18sp" />

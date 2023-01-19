@@ -321,8 +321,8 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
                     public void onClick(View view) {
                         try {
                             String name = userInput.getText().toString();
-                            if(name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
-                                Toast.makeText(PlaylistSongsActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
+                            if(name.equals("Избранное") || name.equals("")  || namesofplaylists.contains(name))
+                                Toast.makeText(PlaylistSongsActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                             else {
                                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
                                 bw.write(name);
@@ -390,7 +390,7 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
                 bw.write(namesofsongstoadd[i]);
                 bw.newLine();}
                 else{
-                    Toast.makeText(PlaylistSongsActivity.this, "Песня " + namesofsongstoadd[i] + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlaylistSongsActivity.this, getString(R.string.song) + namesofsongstoadd[i] + getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
                 }
             }
             bw.close();

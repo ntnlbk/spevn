@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
     @Override
     public void updatetextchecked(int i) {
-        howmanycheckedtxt.setText(String.valueOf(i) + getResources().getString(R.string.checked));
+        howmanycheckedtxt.setText(String.valueOf(i) + " " + getResources().getString(R.string.checked));
     }
 
     @Override

@@ -20,7 +20,7 @@
             android:drawableStart="@drawable/plus"
             android:drawablePadding="9dp"
             android:fontFamily="@font/myfont"
-            android:text="Добавить в плейлист"
+            android:text="@string/add_to_playlist"
             android:textAllCaps="false"
             android:textColor="@color/C2"
             android:textSize="18sp" />
@@ -42,7 +42,7 @@
             android:drawableStart="@drawable/delete"
             android:drawablePadding="9dp"
             android:fontFamily="@font/myfont"
-            android:text="Удалить из плейлиста"
+            android:text="@string/delete_from_playlist"
             android:textAllCaps="false"
             android:textColor="@color/C2"
             android:textSize="18sp" />

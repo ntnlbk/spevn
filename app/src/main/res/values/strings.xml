@@ -4,8 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title_activity_scrolling" translatable="false">ScrollingActivity</string>
-    <string name="confirm">Подтвердить</string>
-    <string name="cancel">Отмена</string>
+    <string name="confirm">Пацвердзіць</string>
+    <string name="cancel">Адмена</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="find">Пошук</string>
     <string name="all">Усе</string>
@@ -49,10 +49,10 @@
     <string name="title">Назва</string>
     <string name="text_and_chords">Тэкст і акорды</string>
     <string name="you_can_add_audio">Вы можаце дадаць аўдыязапіс</string>
-    <string name="checked"> выбрана</string>
+    <string name="checked">выбрана</string>
     <string name="song">Песня </string>
     <string name="already_in_fav"> ужо ёсць у абраным</string>
-    <string name="incorrect_name">Такое імя недаступна</string>
+    <string name="incorrect_name">Гэтая назва недаступна</string>
     <string name="update_is_available">Новая версія даступна!</string>
     <string name="please_update">Калі ласка, абнавіце праграму</string>
     <string name="update">Абнавіць</string>
@@ -68,4 +68,39 @@
     <string name="help_add_audio_to_all_songs">Дапамагіце зрабіць так, каб усе песні можна было паслухаць</string>
     <string name="watch_ad">Паглядзець рэкламу</string>
     <string name="watch_ad_to_help_us">Паглядзіце кароткую рэкламу, каб дапамагчы праекту</string>
+    <string name="show_chords">Паказваць акорды</string>
+    <string name="transpose">Транспанаваць</string>
+    <string name="change_chords_color">Змяніць колер акордаў</string>
+    <string name="dark_theme">Цёмная тэма</string>
+    <string name="text_size">Размер шрыфту</string>
+    <string name="accept">Прыняць</string>
+    <string name="choosing_color">Выбар колеру</string>
+    <string name="accept_exit">Пацвердзіце выхад</string>
+    <string name="there_are_unsaved_options">Ёсць змены ў наладах</string>
+    <string name="cancel_exit">Адмяніць выхад</string>
+    <string name="exit">Выйсці</string>
+    <string name="impossible_to_delete_playlist">Немагчыма выдаліць гэты плэйліст</string>
+    <string name="impossible_to_rename_playlist">Немагчыма перайменаваць гэты плэйліст</string>
+    <string name="enter_new_name">Увядзіце новую назву</string>
+    <string name="change_name">Змяніце назву</string>
+    <string name="there_arent_songs_yet_do_you_want_add">Тут яшчэ нічога няма. Хочаце дадаць?</string>
+    <string name="add">Дадаць</string>
+    <string name="listen">паслухаць</string>
+    <string name="check_internet_connection">Праверце падключэнне да інтэрнету</string>
+    <string name="there_is_not_audio">Запіс песні адсутнічае</string>
+    <string name="add_to_playlist">Дадаць у плейліст</string>
+    <string name="new_playlist">Новы плейліст</string>
+    <string name="close">Зачыніць</string>
+    <string name="playlists_name">Назва плэйліста</string>
+    <string name="delete_from_playlist">Выдаліць з плейліста</string>
+    <string name="add_to_fav">Дадаць да абранага</string>
+    <string name="changing_name">Змяніць назву</string>
+    <string name="delete_playlist">Выдаліць плэйліст</string>
+    <string name="add_songs_to_playlist">Дадаць песні ў плейліст</string>
+    <string name="updation">Абнаўленне!</string>
+    <string name="ok">OK</string>
+    <string name="add_new_functions">Дададзена функцыя праслухоўвання некаторых песень. Запісы будуць паступова дадавацца.</string>
+    <string name="if_you_have_some_propositions">Калі вы маеце прапановы песень (або запісаў да ўжо дададзеных песень), якіх яшчэ няма ў дадатку, зараз вы можаце адправіць іх нам, запоўніўшы спецыяльную форму. (гл. "Дапамога праекту"). Мы дададзім іх у бібліятэку ў бліжэйшым абнаўленні.</string>
+    <string name="new_songs_were_added">Дададзены новыя песні, выпраўлены абдрукоўкі.</string>
+    <string name="new_possibility_sup">Дададзена магчымасць падтрымаць праект матэрыяльна (гл. "Дапамога праекту").</string>
 </resources>

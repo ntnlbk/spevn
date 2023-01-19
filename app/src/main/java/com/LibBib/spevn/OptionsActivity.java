@@ -328,7 +328,7 @@ public class OptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new ColorPickerDialog.Builder(OptionsActivity.this)
-                        .setTitle("Выбор цвета")
+                        .setTitle(getString(R.string.choosing_color))
                         .setPreferenceName("MyColorPickerDialog")
                         .setPositiveButton(getString(R.string.confirm),
                                 new ColorEnvelopeListener() {
@@ -415,15 +415,15 @@ public class OptionsActivity extends AppCompatActivity {
             }
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(OptionsActivity.this);
-            builder.setTitle("Подтвердите выход")
-                    .setMessage("Есть несохраненные изменения в настройках")
-                    .setPositiveButton("Отменить выход", new DialogInterface.OnClickListener() {
+            builder.setTitle(getString(R.string.accept_exit))
+                    .setMessage(getString(R.string.there_are_unsaved_options))
+                    .setPositiveButton(getString(R.string.cancel_exit), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             // Закрываем окно
                             dialog.cancel();
                         }
 
-                    }).setNegativeButton("Выйти", new DialogInterface.OnClickListener() {
+                    }).setNegativeButton(getString(R.string.exit), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if (name.equals("none")) {

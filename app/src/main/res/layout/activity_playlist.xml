@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/myfont"
-            android:text="Плейлисты"
+            android:text="@string/playlists"
             android:textColor="@color/C2"
             android:textSize="20dp"
             android:textStyle="bold" />
