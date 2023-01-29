@@ -78,7 +78,7 @@
         android:layout_marginBottom="-27dp"
         android:fontFamily="@font/myfont"
         android:paddingLeft="7dp"
-        android:text="Короткие"
+        android:text=""
         android:textColor="#89858D"
         android:textSize="16dp" />
 

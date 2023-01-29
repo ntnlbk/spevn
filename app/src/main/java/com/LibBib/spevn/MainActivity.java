@@ -38,6 +38,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.navigation.NavigationView;
@@ -56,6 +57,8 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -128,14 +131,14 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
     @Override
     public void updatetextchecked(int i) {
-        howmanycheckedtxt.setText(String.valueOf(i) + " выбрано");
+        howmanycheckedtxt.setText(String.valueOf(i) + " " + getResources().getString(R.string.checked));
     }
 
     @Override
     public void addtoizbr(ArrayList<String> positions) {
         ArrayList<String> allready = new ArrayList<>();
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("Избранное"))); // проверяем наличие песен в плейлисте
+            BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(getString(R.string.favourite)))); // проверяем наличие песен в плейлисте
             String src = "";
             while ((src = br.readLine()) != null) {
                 allready.add(src);
@@ -148,13 +151,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
 
         }
         try {
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("Избранное", MODE_APPEND)));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput(getString(R.string.favourite), MODE_APPEND)));
             for (int i = 0; i < positions.size(); i++) {
                 if (allready.contains(positions.get(i)) == false) {
                     bw.write(positions.get(i));
                     bw.newLine();
                 } else {
-                    Toast.makeText(MainActivity.this, "Песня " + positions.get(i) + " уже есть в избранном", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + positions.get(i) + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -188,15 +191,15 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             while ((src = br.readLine()) != null) {
                 namesofplaylists.add(src);
             }
-            if (namesofplaylists.contains("Избранное") == false)
-                namesofplaylists.add(0, "Избранное");
+            if (namesofplaylists.contains(getString(R.string.favourite)) == false)
+                namesofplaylists.add(0, getString(R.string.favourite));
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         } catch (IOException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         }
 
         for (int i = 0; i < namesofplaylists.size(); i++) {
@@ -261,8 +264,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     public void onClick(View view) {
                         try {
                             String name = userInput.getText().toString();
-                            if (name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
-                                Toast.makeText(MainActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
+                            if (name.equals(getString(R.string.favourite)) || name.equals("") || namesofplaylists.contains(name))
+                                Toast.makeText(MainActivity.this, getResources().getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                             else {
                                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
                                 bw.write(name);
@@ -325,7 +328,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                     bw.write(namesofsongstoadd[i]);
                     bw.newLine();
                 } else {
-                    Toast.makeText(MainActivity.this, "Песня " + namesofsongstoadd[i] + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + namesofsongstoadd[i] + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
+
                 }
             }
             bw.close();
@@ -348,6 +352,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES); //темная тема
@@ -362,6 +367,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         for (int i = 0; i < namesofsongs.length; i++) {
             typesofsongs.put(namesofsongs[i], types[i]);
         }
+        Resources resourses = getResources();
         listt = (ListView) findViewById(R.id.namess);
         searchtext = (EditText) findViewById(R.id.editText);
         allsongs = (TextView) findViewById(R.id.allsongs);
@@ -390,10 +396,10 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         close.setVisibility(View.INVISIBLE);
         morebtnchecked.setVisibility(View.INVISIBLE);
         acceptbtn.setVisibility(View.INVISIBLE);
-        filtry.add("Все");
-        filtry.add("Части имши");
-        filtry.add("Короткие");
-        filtry.add("Длинные");
+        filtry.add(getString(R.string.all));
+        filtry.add(getString(R.string.parts));
+        filtry.add(getString(R.string.short_songs));
+        filtry.add(getString(R.string.long_songs));
         int darktheme =0;
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput("options"))); //считываение настроек
@@ -431,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             acceptbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (playlistsongs.equals("Избранное")) {
+                    if (playlistsongs.equals(getString(R.string.favourite))) {
                         addtoizbr(adapter2.getCheckedpos());
                         onBackPressed();
                     } else {
@@ -456,7 +462,8 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                                     bw.write(songs.get(i));
                                     bw.newLine();
                                 } else {
-                                    Toast.makeText(MainActivity.this, "Песня " + songs.get(i) + " уже есть в плейлисте", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this,  getResources().getString(R.string.song) + songs.get(i) + getResources().getString(R.string.already_in_fav), Toast.LENGTH_SHORT).show();
+
                                 }
                             }
                             bw.close();
@@ -505,17 +512,16 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        List<String> testDeviceIds = Arrays.asList("6318028ABE795F15CFBC0D366196F8A9", AdRequest.DEVICE_ID_EMULATOR, "4A6C605A724A6F45710C372E31DD989E");
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
+        MobileAds.setRequestConfiguration(configuration);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("6318028ABE795F15CFBC0D366196F8A9")
                 .build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-            }
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
             }
             @Override
             public void onAdOpened() {
@@ -526,10 +532,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
             }
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
+
             @Override
             public void onAdClosed() {
                 // Code to be executed when the user is about to return
@@ -631,12 +634,13 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
+
                 // Log.d("MyLog", "Value is: " + value);
-                if (!value.equals("8")) {
-                    String title = "Новая версия доступна!";
-                    String message = "Пожалуйста, обновите приложение";
-                    String button1String = "Обновить";
-                    String button2String = "Пропустить обновление";
+                if (!value.equals("9")) {
+                    String title = resourses.getString(R.string.update_is_available);
+                    String message = resourses.getString(R.string.please_update);
+                    String button1String = resourses.getString(R.string.update);
+                    String button2String = resourses.getString(R.string.skip_update);
                     final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle(title);  // заголовок
                     builder.setMessage(message); // сообщение
@@ -772,7 +776,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         nameofsongsdin = new String[]{};
         ArrayList<String> temp = new ArrayList<>();
         for (int i = 0; i < namesofsongs.length; i++) {
-            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("части имши"))
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains(getString(R.string.parts).toLowerCase()))
                 temp.add(namesofsongs[i]);
         }
         nameofsongsdin = temp.toArray(new String[0]);
@@ -794,7 +798,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         nameofsongsdin = new String[]{};
         ArrayList<String> temp = new ArrayList<>();
         for (int i = 0; i < namesofsongs.length; i++) {
-            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("короткие"))
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains(getString(R.string.short_songs).toLowerCase()))
                 temp.add(namesofsongs[i]);
         }
         nameofsongsdin = temp.toArray(new String[0]);
@@ -816,7 +820,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
         nameofsongsdin = new String[]{};
         ArrayList<String> temp = new ArrayList<>();
         for (int i = 0; i < namesofsongs.length; i++) {
-            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains("длинные"))
+            if (typesofsongs.get(namesofsongs[i]).toLowerCase().contains(getString(R.string.long_songs).toLowerCase()))
                 temp.add(namesofsongs[i]);
         }
         nameofsongsdin = temp.toArray(new String[0]);

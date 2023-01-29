@@ -34,7 +34,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
-        android:text="Тёмная тема"
+        android:text="@string/dark_theme"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 
@@ -75,7 +75,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
-        android:text="Показывать аккорды"
+        android:text="@string/show_chords"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 
@@ -88,7 +88,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
-        android:text="Размер шрифта"
+        android:text="@string/text_size"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 
@@ -170,7 +170,7 @@
         android:layout_marginBottom="15dp"
         android:background="#FFD645"
         android:fontFamily="@font/myfont"
-        android:text="Сохранить"
+        android:text="@string/accept"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="21dp"
@@ -291,7 +291,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
-        android:text="Изменить цвет аккордов"
+        android:text="@string/change_chords_color"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 
@@ -303,7 +303,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="88dp"
         android:fontFamily="@font/myfont"
-        android:text="Настройки"
+        android:text="@string/options"
         android:textColor="@color/C2"
         android:textSize="30dp"
         android:textStyle="bold" />
@@ -317,7 +317,7 @@
         android:layout_marginLeft="45dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/myfont"
-        android:text="Транспонировать"
+        android:text="@string/transpose"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 

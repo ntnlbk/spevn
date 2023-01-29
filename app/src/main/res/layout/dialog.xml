@@ -18,7 +18,7 @@
         android:layout_marginTop="17dp"
         android:fontFamily="@font/myfont"
         android:gravity="center"
-        android:text="Новый плейлист"
+        android:text="@string/new_playlist"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/C2"
         android:textSize="18dp"
@@ -36,7 +36,7 @@
         android:backgroundTint="@color/yellow"
         android:fontFamily="@font/myfont"
         android:textColor="@color/C2"
-        android:hint="Название плейлиста"
+        android:hint="@string/playlists_name"
         android:textColorHint="@color/C2"
         android:textCursorDrawable="@drawable/cursor"
         android:textSize="14dp">
@@ -62,7 +62,7 @@
                 android:layout_marginLeft="18dp"
                 android:background="#00FFFFFF"
                 android:gravity="center|center_vertical"
-                android:text="Закрыть"
+                android:text="@string/close"
                 android:textColor="@color/yellow" />
 
             <Button
@@ -74,7 +74,7 @@
                 android:layout_marginRight="18dp"
                 android:background="#00FFFFFF"
                 android:gravity="center"
-                android:text="Сохранить"
+                android:text="@string/accept"
                 android:textColor="@color/yellow" />
         </RelativeLayout>
 

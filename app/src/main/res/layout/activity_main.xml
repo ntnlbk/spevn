@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="#00E5E5E5"
     tools:context=".MainActivity"
+    tools:openDrawer="start"
     >
     <!--  tools:openDrawer="start"  для того, чтобы видеть в редакторе navigationview -->
 
@@ -67,7 +68,7 @@
             android:layout_marginTop="22dp"
             android:fontFamily="@font/myfont"
             android:gravity="center"
-            android:text="0 выбрано"
+            android:text="@string/_0"
             android:textColor="@color/C2"
             android:textSize="18dp" />
     </RelativeLayout>
@@ -103,7 +104,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/myfont"
                     android:onClick="allsongs"
-                    android:text="Все"
+                    android:text="@string/all"
                     android:textColor="@color/C2"
                     android:textSize="16dp" />
 
@@ -116,7 +117,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/myfont"
                     android:onClick="xsongs"
-                    android:text="Части имши"
+                    android:text="@string/parts"
                     android:textColor="@color/C4"
                     android:textSize="16dp" />
 
@@ -129,7 +130,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/myfont"
                     android:onClick="shortsongs"
-                    android:text="Короткие"
+                    android:text="@string/short_songs"
                     android:textColor="@color/C4"
                     android:textSize="16dp" />
 
@@ -142,7 +143,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/myfont"
                     android:onClick="longsongs"
-                    android:text="Длинные"
+                    android:text="@string/long_songs"
                     android:textColor="@color/C4"
                     android:textSize="16dp" />
 
@@ -217,7 +218,7 @@
             android:drawableRight="@drawable/search"
             android:ems="10"
             android:fontFamily="@font/myfont"
-            android:hint="Поиск"
+            android:hint="@string/find"
             android:inputType="textPersonName"
             android:paddingLeft="12dp"
             android:paddingRight="8dp"
@@ -261,7 +262,7 @@
 
             <TextView
                 android:id="@+id/helpbtn"
-                android:layout_width="143dp"
+                android:layout_width="163dp"
                 android:layout_height="39dp"
                 android:layout_alignBottom="@id/addsong"
                 android:layout_marginStart="42dp"
@@ -271,7 +272,7 @@
                 android:fontFamily="@font/myfont"
                 android:gravity="center"
                 android:paddingRight="6dp"
-                android:text="Помочь проекту"
+                android:text="@string/help_project"
                 android:textColor="@color/C2">
 
             </TextView>
@@ -298,7 +299,7 @@
                 android:layout_marginBottom="-58.5dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
-                android:text="Предложить песню"
+                android:text="@string/propose_song"
                 android:textColor="@color/C2" />
 
             <TextView
@@ -312,7 +313,7 @@
                 android:layout_marginBottom="-58.5dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
-                android:text="Случайная песня"
+                android:text="@string/random_song"
                 android:textColor="@color/C2" />
 
 
@@ -329,7 +330,7 @@
                 android:layout_marginBottom="-59.5dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
-                android:text="Настройки"
+                android:text="@string/options"
                 android:textColor="@color/C2" />
 
 
@@ -347,8 +348,7 @@
                 android:layout_marginBottom="-67dp"
                 android:fontFamily="@font/myfont"
                 android:gravity="center_vertical"
-                android:text="Информация
-"
+                android:text="@string/information"
                 android:textColor="@color/C2" />
 
             <TextView
@@ -362,7 +362,7 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="-58dp"
                 android:fontFamily="@font/myfont"
-                android:text="Плейлисты"
+                android:text="@string/playlists"
                 android:textColor="@color/C2" />
 
 
@@ -399,7 +399,7 @@
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="142dp"
                 android:fontFamily="@font/myfont"
-                android:text="Главная"
+                android:text="@string/main"
                 android:textColor="@color/C2" />
 
         </RelativeLayout>

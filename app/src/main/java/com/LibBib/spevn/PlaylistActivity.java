@@ -3,6 +3,7 @@ package com.LibBib.spevn;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -67,7 +68,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
 
         namesofplaylists.clear();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //navigationView.setNavigationItemSelectedListener(this);
         Intent intent = getIntent();
         String type="", name ="";
@@ -114,15 +115,15 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
             while ((src = br.readLine()) != null){
                 namesofplaylists.add(src);
             }
-            if (namesofplaylists.contains("Избранное")==false)
-                namesofplaylists.add(0, "Избранное");
+            if (namesofplaylists.contains(getString(R.string.favourite))==false)
+                namesofplaylists.add(0, getString(R.string.favourite));
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         } catch (IOException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         }
 
         for(int i =0; i<namesofplaylists.size(); i++){
@@ -163,8 +164,8 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
             public void onClick(View view) {
                 try {
                     String name = userInput.getText().toString();
-                    if(name.equals("Избранное") || name.equals("") || name.equals("Антон лох") || name.equals("Яна лох") || namesofplaylists.contains(name))
-                        Toast.makeText(PlaylistActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
+                    if(name.equals(getString(R.string.favourite)) || name.equals("") || namesofplaylists.contains(name))
+                        Toast.makeText(PlaylistActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                     else {
                         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
                         bw.write(name);
@@ -202,8 +203,8 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
 
     @Override
     public void delete(String name) {
-        if (name.equals("Избранное")) {
-            Toast.makeText(PlaylistActivity.this, "Удалить этот плейлист невозможно", Toast.LENGTH_LONG).show();
+        if (name.equals(getString(R.string.favourite))) {
+            Toast.makeText(PlaylistActivity.this, getString(R.string.impossible_to_delete_playlist), Toast.LENGTH_LONG).show();
         } else {
             namesofplaylists.remove(name);
             try {
@@ -245,17 +246,17 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
 
     @Override
     public void redact(final String name) {
-        if (name.equals("Избранное")) {
-            Toast.makeText(PlaylistActivity.this, "Переименовать этот плейлист невозможно", Toast.LENGTH_LONG).show();
+        if (name.equals(getString(R.string.favourite))) {
+            Toast.makeText(PlaylistActivity.this, getString(R.string.impossible_to_rename_playlist), Toast.LENGTH_LONG).show();
         } else {
             LayoutInflater li = LayoutInflater.from(PlaylistActivity.this);
             View promptsView = li.inflate(R.layout.dialog, null);
             AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(PlaylistActivity.this, R.style.DialogStyle);
             mDialogBuilder.setView(promptsView);
             final EditText userInput = (EditText) promptsView.findViewById(R.id.input_text);
-            userInput.setHint("Введите новое название");
+            userInput.setHint(getString(R.string.enter_new_name));
             final TextView text = (TextView) promptsView.findViewById(R.id.tv);
-            text.setText("Измените название");
+            text.setText(getString(R.string.change_name));
             final Button okbtn = (Button) promptsView.findViewById(R.id.savebtn);
             final Button closebtn = (Button) promptsView.findViewById(R.id.closebtndialog);
             final AlertDialog alertDialog = mDialogBuilder.create();
@@ -264,8 +265,8 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
                 @Override
                 public void onClick(View view) {
                     String newname = userInput.getText().toString();
-                    if (newname.equals("Избранное") || newname.equals("") || newname.equals("Антон лох") || newname.equals("Яна лох") || namesofplaylists.contains(newname))
-                        Toast.makeText(PlaylistActivity.this, "Такое имя недоступно", Toast.LENGTH_LONG).show();
+                    if (newname.equals(getString(R.string.favourite)) || newname.equals("") || namesofplaylists.contains(newname))
+                        Toast.makeText(PlaylistActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                     else {
                         namesofplaylists.set(namesofplaylists.indexOf(name), newname);
                         ArrayList<String> songs = new ArrayList<>();

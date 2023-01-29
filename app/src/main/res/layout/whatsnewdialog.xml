@@ -12,7 +12,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/myfont"
-        android:text="Обновление!"
+        android:text="@string/updation"
         android:textColor="@color/C2"
         android:textSize="18dp"
         android:textStyle="bold" />
@@ -24,7 +24,7 @@
         android:layout_marginRight="26dp"
         android:layout_marginTop="21dp"
         android:fontFamily="@font/myfont"
-        android:text="Добавлена функция прослушивания некоторых песен. Записи будут постепенно добавляться."
+        android:text="@string/add_new_functions"
         android:textColor="@color/C2"
         android:textSize="14dp"
         android:textStyle="normal" />
@@ -37,7 +37,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="21dp"
         android:fontFamily="@font/myfont"
-        android:text='Если у вас есть предложения песен (или записей к уже добавленным песням), которых еще нет в приложении, теперь вы можете отправить их нам, заполнив специальную форму. (см. "Помощь проекту"). Мы добавим их в библиотеку в ближайшем обновлении.'
+        android:text='@string/if_you_have_some_propositions'
         android:textColor="@color/C2"
         android:textSize="14dp"
         android:textStyle="normal" />
@@ -50,7 +50,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="21dp"
         android:fontFamily="@font/myfont"
-        android:text='Добавлены новые песни, исправлены опечатки.'
+        android:text='@string/new_songs_were_added'
         android:textColor="@color/C2"
         android:textSize="14dp"
         android:textStyle="normal" />
@@ -63,7 +63,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginRight="26dp"
         android:fontFamily="@font/myfont"
-        android:text='Добавлена возможность поддержать проект материально (см. "Помощь проекту").'
+        android:text='@string/new_possibility_sup'
         android:textColor="@color/C2"
         android:textSize="14dp"
         android:textStyle="normal" />
@@ -77,7 +77,7 @@
         android:layout_marginRight="26dp"
         android:fontFamily="@font/myfont"
         android:gravity="center_horizontal|end"
-        android:text='ОК'
+        android:text='@string/ok'
         android:textColor="#FFC700"
         android:textSize="18dp"
         android:textStyle="normal" />

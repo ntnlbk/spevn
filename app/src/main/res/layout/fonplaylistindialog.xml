@@ -38,7 +38,7 @@
         android:background="@drawable/txtvw"
         android:fontFamily="@font/myfont"
         android:paddingLeft="7dp"
-        android:text="Избранное"
+        android:text="@string/favourite"
         android:textColor="@color/C2"
         android:textSize="14dp"
         android:textStyle="normal">

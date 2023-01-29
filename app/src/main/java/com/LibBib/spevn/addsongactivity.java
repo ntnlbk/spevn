@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -80,8 +81,8 @@ public class addsongactivity extends AppCompatActivity {
             }
         });
 
-        addtextfilebtn.setText(Html.fromHtml("или вы можете <font color='#FFC700'> прикрепить текстовый файл </font>"));  //делаем выделенные слова желтыми
-        addmusfilebtn.setText(Html.fromHtml("или вы можете <font color='#FFC700'> прикрепить аудиофайл </font>"));
+        addtextfilebtn.setText(Html.fromHtml(getResources().getString(R.string.you_can_add_audiofile1) + " <font color='#FFC700'> " + getResources().getString(R.string.you_can_add_textfile2) + "</font>"));  //делаем выделенные слова желтыми
+        addmusfilebtn.setText(Html.fromHtml(getResources().getString(R.string.you_can_add_audiofile1) + " <font color='#FFC700'> " + getResources().getString(R.string.you_can_add_audiofile2) + "</font>"));
 
         addtextfilebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +118,7 @@ public class addsongactivity extends AppCompatActivity {
                 link=linkedit.getText().toString();
                 nameofsong=nameofsongedit.getText().toString();
                 if(!hasConnection(addsongactivity.this))
-                    Toast.makeText(addsongactivity.this, "Нет подключения к интернету", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(addsongactivity.this, getResources().getString(R.string.no_connection), Toast.LENGTH_SHORT).show();
                 else if(!name.equals("") && !nameofsong.equals("")){
                     progressBar.setVisibility(View.VISIBLE);
                     String filename = name+ System.currentTimeMillis();
@@ -155,7 +156,7 @@ public class addsongactivity extends AppCompatActivity {
                     uploadTask.addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(addsongactivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addsongactivity.this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
 
                         }
                     }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -168,7 +169,7 @@ public class addsongactivity extends AppCompatActivity {
                         uploadTask.addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(addsongactivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(addsongactivity.this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
 
                             }
                         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -185,7 +186,7 @@ public class addsongactivity extends AppCompatActivity {
                                  uploadTask.addOnFailureListener(new OnFailureListener() {
                                      @Override
                                      public void onFailure(@NonNull Exception e) {
-                                         Toast.makeText(addsongactivity.this, "Ошибка", Toast.LENGTH_SHORT).show();
+                                         Toast.makeText(addsongactivity.this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
 
                                      }
                                  }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -196,7 +197,7 @@ public class addsongactivity extends AppCompatActivity {
                                      }
                                  });
                              }
-                            Toast.makeText(addsongactivity.this, "Данные успешно отправлены, спасибо!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(addsongactivity.this, getResources().getString(R.string.success_thaks), Toast.LENGTH_SHORT).show();
                              File file = new File(mainfile.getPath());
                              file.delete();
                             progressBar.setVisibility(View.INVISIBLE);
@@ -204,7 +205,7 @@ public class addsongactivity extends AppCompatActivity {
                     });
 
                 } else{
-                    Toast.makeText(addsongactivity.this, "Введите ваше имя и название песни", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(addsongactivity.this, getResources().getString(R.string.enter_your_name), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -218,7 +219,7 @@ public class addsongactivity extends AppCompatActivity {
                     textUri=null;
                     canceltxtbtn.setVisibility(View.INVISIBLE);
                     textfilename="";
-                    addtextfilebtn.setText(Html.fromHtml("или вы можете <font color='#FFC700'> прикрепить текстовый файл </font>"));
+                    addtextfilebtn.setText(Html.fromHtml(getResources().getString(R.string.you_can_add_audiofile1) + " <font color='#FFC700'> " + getResources().getString(R.string.you_can_add_textfile2) + "</font>"));
                 }
             }
         });
@@ -229,12 +230,13 @@ public class addsongactivity extends AppCompatActivity {
                     musUri=null;
                     cancelmusbtn.setVisibility(View.INVISIBLE);
                     musfilename="";
-                    addmusfilebtn.setText(Html.fromHtml("или вы можете <font color='#FFC700'> прикрепить аудиофайл </font>"));
+                    addmusfilebtn.setText(Html.fromHtml(getResources().getString(R.string.you_can_add_audiofile1) + " <font color='#FFC700'> " + getResources().getString(R.string.you_can_add_audiofile2) + "</font>"));
                 }
             }
         });
 
     }
+    @SuppressLint("Range")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {

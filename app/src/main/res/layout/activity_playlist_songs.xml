@@ -14,9 +14,9 @@
         android:layout_centerInParent="true"
         android:fontFamily="@font/myfont"
         android:gravity="center"
-        android:text="Тут еще нет песен. Хотите добавить?"
+        android:text="@string/there_arent_songs_yet_do_you_want_add"
         android:textColor="@color/C2"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold"
         android:visibility="visible" />
 
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="-64dp"
         android:background="@drawable/btnsongsplayliststyle"
-        android:text="Добавить"
+        android:text="@string/add"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:visibility="invisible" />
@@ -44,9 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/myfont"
+            android:text=""
             android:textColor="@color/C2"
-            android:textSize="20dp"
-            android:text="sdfsdf"/>
+            android:textSize="20dp" />
 
         <ImageButton
             android:id="@+id/backbtnsongsplaylist"
