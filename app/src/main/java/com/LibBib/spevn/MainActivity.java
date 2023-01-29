@@ -38,6 +38,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.navigation.NavigationView;
@@ -56,6 +57,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -510,17 +512,16 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        List<String> testDeviceIds = Arrays.asList("6318028ABE795F15CFBC0D366196F8A9", AdRequest.DEVICE_ID_EMULATOR, "4A6C605A724A6F45710C372E31DD989E");
+        RequestConfiguration configuration =
+                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
+        MobileAds.setRequestConfiguration(configuration);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("6318028ABE795F15CFBC0D366196F8A9")
                 .build();
         mAdView.loadAd(adRequest);
         mAdView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-            }
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
             }
             @Override
             public void onAdOpened() {
@@ -531,10 +532,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             public void onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
             }
-            @Override
-            public void onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
+
             @Override
             public void onAdClosed() {
                 // Code to be executed when the user is about to return
