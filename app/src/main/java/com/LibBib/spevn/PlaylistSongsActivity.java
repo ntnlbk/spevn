@@ -247,15 +247,15 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
             while ((src = br.readLine()) != null){
                 namesofplaylists.add(src);
             }
-            if (namesofplaylists.contains("Избранное")==false)
-                namesofplaylists.add(0, "Избранное");
+            if (namesofplaylists.contains(getString(R.string.favourite))==false)
+                namesofplaylists.add(0, getString(R.string.favourite));
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         } catch (IOException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         }
 
         for(int i =0; i<namesofplaylists.size(); i++){
@@ -321,7 +321,7 @@ public class PlaylistSongsActivity extends AppCompatActivity implements MyIntefr
                     public void onClick(View view) {
                         try {
                             String name = userInput.getText().toString();
-                            if(name.equals("Избранное") || name.equals("")  || namesofplaylists.contains(name))
+                            if(name.equals(getString(R.string.favourite)) || name.equals("")  || namesofplaylists.contains(name))
                                 Toast.makeText(PlaylistSongsActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                             else {
                                 BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));

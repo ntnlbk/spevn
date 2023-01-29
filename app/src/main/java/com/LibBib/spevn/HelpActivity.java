@@ -107,7 +107,7 @@ public class HelpActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onConsumeResponse(@NonNull BillingResult billingResult, @NonNull String s) {
                                                     if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                                        Toast.makeText(HelpActivity.this, "Спасибо!", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(HelpActivity.this, getString(R.string.thanks), Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             }
@@ -146,7 +146,7 @@ public class HelpActivity extends AppCompatActivity {
             public void onBillingServiceDisconnected() {
                 // Try to restart the connection on the next request to
                 // Google Play by calling the startConnection() method.
-                Toast.makeText(HelpActivity.this, "Повторите попытку", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HelpActivity.this, getString(R.string.try_again), Toast.LENGTH_SHORT).show();
             }
         });
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +175,7 @@ public class HelpActivity extends AppCompatActivity {
                 if (billingClient != null && hasConnection(HelpActivity.this) && billingFlowParams!=null) {
                     int responseCode = billingClient.launchBillingFlow(HelpActivity.this, billingFlowParams).getResponseCode();
                 } else if (!hasConnection(HelpActivity.this)) {
-                    Toast.makeText(HelpActivity.this, "Проверьте подключение к интернету и повторите попытку", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HelpActivity.this, getString(R.string.check_internet_connection), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -188,7 +188,7 @@ public class HelpActivity extends AppCompatActivity {
                         @Override
                         public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
                             // Handle the reward.
-                            Toast.makeText(HelpActivity.this, "Спасибо!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HelpActivity.this, getString(R.string.thanks), Toast.LENGTH_SHORT).show();
                             isreclamawatched = true;
                             int rewardAmount = rewardItem.getAmount();
                             String rewardType = rewardItem.getType();
@@ -196,9 +196,9 @@ public class HelpActivity extends AppCompatActivity {
                     });
                 } else {
                     if (isreclamawatched)
-                        Toast.makeText(HelpActivity.this, "Вы уже посмотрели рекламу", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HelpActivity.this, getString(R.string.you_have_already_watched), Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(HelpActivity.this, "Проверьте подключение к интернету и попробуйте еще раз", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HelpActivity.this, getString(R.string.check_internet_connection), Toast.LENGTH_SHORT).show();
                 }
             }
         });

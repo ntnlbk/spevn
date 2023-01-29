@@ -115,15 +115,15 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
             while ((src = br.readLine()) != null){
                 namesofplaylists.add(src);
             }
-            if (namesofplaylists.contains("Избранное")==false)
-                namesofplaylists.add(0, "Избранное");
+            if (namesofplaylists.contains(getString(R.string.favourite))==false)
+                namesofplaylists.add(0, getString(R.string.favourite));
             br.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         } catch (IOException e) {
             e.printStackTrace();
-            namesofplaylists.add(0, "Избранное");
+            namesofplaylists.add(0, getString(R.string.favourite));
         }
 
         for(int i =0; i<namesofplaylists.size(); i++){
@@ -164,7 +164,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
             public void onClick(View view) {
                 try {
                     String name = userInput.getText().toString();
-                    if(name.equals("Избранное") || name.equals("") || namesofplaylists.contains(name))
+                    if(name.equals(getString(R.string.favourite)) || name.equals("") || namesofplaylists.contains(name))
                         Toast.makeText(PlaylistActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                     else {
                         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(openFileOutput("namesofplaylists", MODE_APPEND)));
@@ -203,7 +203,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
 
     @Override
     public void delete(String name) {
-        if (name.equals("Избранное")) {
+        if (name.equals(getString(R.string.favourite))) {
             Toast.makeText(PlaylistActivity.this, getString(R.string.impossible_to_delete_playlist), Toast.LENGTH_LONG).show();
         } else {
             namesofplaylists.remove(name);
@@ -246,7 +246,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
 
     @Override
     public void redact(final String name) {
-        if (name.equals("Избранное")) {
+        if (name.equals(getString(R.string.favourite))) {
             Toast.makeText(PlaylistActivity.this, getString(R.string.impossible_to_rename_playlist), Toast.LENGTH_LONG).show();
         } else {
             LayoutInflater li = LayoutInflater.from(PlaylistActivity.this);
@@ -265,7 +265,7 @@ public class PlaylistActivity extends AppCompatActivity implements InterfacePlay
                 @Override
                 public void onClick(View view) {
                     String newname = userInput.getText().toString();
-                    if (newname.equals("Избранное") || newname.equals("") || namesofplaylists.contains(newname))
+                    if (newname.equals(getString(R.string.favourite)) || newname.equals("") || namesofplaylists.contains(newname))
                         Toast.makeText(PlaylistActivity.this, getString(R.string.incorrect_name), Toast.LENGTH_LONG).show();
                     else {
                         namesofplaylists.set(namesofplaylists.indexOf(name), newname);
