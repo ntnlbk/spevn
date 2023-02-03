@@ -43,7 +43,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/myfont"
-        android:text="@string/_2022"
+        android:text="@string/year"
         android:textColor="@color/C2"
         android:textSize="18dp" />
 
