@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     @Override
     public void progressbar() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
-        finish();
+        // finish();
     }
 
     @Override

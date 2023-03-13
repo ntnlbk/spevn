@@ -10,8 +10,8 @@ android {
         applicationId "com.LibBib.spevn"
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 23
-        versionName "23"
+        versionCode 24
+        versionName "24"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -375,14 +375,12 @@ public class OptionsActivity extends AppCompatActivity {
                 if (darkthemecheck.isChecked()) {
                     darkthemecheck.setChecked(false);
                     darktheme = 0;
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     temp =  AppCompatDelegate.getDefaultNightMode();
-
                 } else {
-
                     darkthemecheck.setChecked(true);
                     darktheme = 1;
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                   // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                     temp =  AppCompatDelegate.getDefaultNightMode();
 
                 }
