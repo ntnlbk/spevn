@@ -760,10 +760,10 @@ public class textofsongwindoww extends AppCompatActivity implements AdapterForRe
         istask = false;
         if (player != null)
             player.stop();
-        if (!isfromplaylist.equals("true")) {
+        /*if (!isfromplaylist.equals("true")) {
             Intent intent = new Intent(textofsongwindoww.this, MainActivity.class);
             startActivity(intent);
-        }
+        }*/
         super.onBackPressed();
     }
     public static boolean hasConnection(final Context context) {
