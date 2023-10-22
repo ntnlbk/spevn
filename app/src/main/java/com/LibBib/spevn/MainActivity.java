@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
     private Map<String, String> typesofsongs = new HashMap<>();
     private int filtr = 0;
     private SharedPreferences prefs;
-    private static final int VERSION_CODE_FIREBASE = 12;
+    private static final int VERSION_CODE_FIREBASE = 13;
 
 
     @Override
