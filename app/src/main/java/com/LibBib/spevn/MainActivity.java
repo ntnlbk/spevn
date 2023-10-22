@@ -738,7 +738,7 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
             }
         });
         prefs = getSharedPreferences("com.LibBib.spevn", MODE_PRIVATE);
-        if (prefs.getBoolean("firstrun", true)) {
+        if (prefs.getBoolean("firstrun", true) || prefs.getBoolean("secondmsg", true)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             View view = (LinearLayout) getLayoutInflater().inflate(R.layout.whatsnewdialog, null);
             builder.setView(view);
@@ -753,7 +753,9 @@ public class MainActivity extends AppCompatActivity implements MyIntefrace {
                 }
             });
             prefs.edit().putBoolean("firstrun", false).apply();
+            prefs.edit().putBoolean("secondmsg", false).apply();
         }
+
     }
     public void allsongs(View view) {
         filtr = 0;
